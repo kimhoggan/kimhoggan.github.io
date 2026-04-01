@@ -1600,205 +1600,241 @@ buildChart(&#x27;b2g&#x27;,&#x27;imp&#x27;);
       <div style="margin: 0 40px 36px;">
         <h4 style="font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#1a7f7f;margin-bottom:16px;">Sample Client Deliverable: DOT Engagement Table</h4>
         <div style="border:1px solid #e2ddd6;border-radius:4px;overflow:auto;max-height:540px;background:#F8FAFC;">
-          <iframe srcdoc="
+          <iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;DOT Account Engagement&lt;/title&gt;
 &lt;style&gt;
-  .tab-bar{display:flex;gap:8px;margin-bottom:16px}
-  .tab{padding:6px 18px;border-radius:20px;font-size:13px;font-weight:500;cursor:pointer;border:2px solid transparent;transition:all .15s;background:var(--color-background-secondary);color:var(--color-text-secondary)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Arial,sans-serif;background:#F8FAFC;color:#1E293B;padding:32px}
+  .report-header{margin-bottom:24px}
+  .report-header h1{font-size:20px;font-weight:700;color:#1E2761;margin-bottom:4px}
+  .report-header p{font-size:13px;color:#64748B}
+  .tab-bar{display:flex;gap:8px;margin-bottom:20px}
+  .tab{padding:7px 20px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;border:2px solid transparent;background:#E2E8F0;color:#64748B;transition:all .15s}
   .tab.b2g{background:#1E2761;color:#fff;border-color:#1E2761}
   .tab.ec{background:#F59E0B;color:#1E2761;border-color:#F59E0B}
-  .stat-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:16px}
-  .stat{background:var(--color-background-secondary);border-radius:8px;padding:10px 12px}
-  .stat-val{font-size:20px;font-weight:500;color:var(--color-text-primary)}
-  .stat-lbl{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+  .stat-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:20px}
+  .stat{background:#fff;border:1px solid #E2E8F0;border-radius:8px;padding:12px 14px}
+  .stat-val{font-size:22px;font-weight:700;color:#1E2761}
+  .stat-lbl{font-size:11px;color:#64748B;margin-top:3px}
+  .table-wrap{background:#fff;border:1px solid #E2E8F0;border-radius:10px;overflow:hidden}
   table{width:100%;border-collapse:collapse;font-size:12px}
-  thead tr{background:var(--color-background-secondary)}
-  th{padding:9px 10px;text-align:left;font-weight:500;font-size:11px;color:var(--color-text-secondary);border-bottom:1.5px solid var(--color-border-tertiary);white-space:nowrap}
+  thead tr{background:#F8FAFC}
+  th{padding:10px 12px;text-align:left;font-weight:600;font-size:11px;color:#64748B;border-bottom:1.5px solid #E2E8F0;white-space:nowrap;cursor:pointer;user-select:none}
+  th:hover{color:#1E2761}
   th.r,td.r{text-align:right}
   th.c,td.c{text-align:center}
-  td{padding:8px 10px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-primary);font-size:12px}
+  td{padding:9px 12px;border-bottom:0.5px solid #F1F5F9;color:#1E293B;font-size:12px}
   tr:last-child td{border-bottom:none}
-  tr.has-intent{background:rgba(245,158,11,0.07)}
-  .badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:10px;font-weight:500;white-space:nowrap}
-  .badge-both{background:rgba(16,185,129,0.15);color:#065f46}
-  .badge-li{background:rgba(0,119,181,0.12);color:#0c4470}
-  .badge-sa{background:rgba(108,63,245,0.12);color:#3b1fa8}
+  tr:hover td{background:#F8FAFC}
+  tr.has-intent td{background:#FFFBEB}
+  tr.has-intent:hover td{background:#FEF3C7}
+  tr.has-email td{background:#F0FDF4}
+  tr.has-email:hover td{background:#DCFCE7}
+  tr.has-both td{background:linear-gradient(135deg,#FFFBEB 50%,#F0FDF4 50%)}
+  tr.has-both:hover td{background:#FEF9C3}
+  .badge{display:inline-block;padding:3px 8px;border-radius:12px;font-size:11px;font-weight:600;white-space:nowrap}
+  .badge-both{background:#D1FAE5;color:#065F46}
+  .badge-li{background:#DBEAFE;color:#1E40AF}
+  .badge-sa{background:#EDE9FE;color:#4C1D95}
   .ctr-bar{display:flex;align-items:center;gap:6px}
-  .ctr-track{flex:1;height:5px;background:var(--color-border-tertiary);border-radius:3px;min-width:40px}
+  .ctr-track{flex:1;height:5px;background:#E2E8F0;border-radius:3px;min-width:50px}
   .ctr-fill{height:5px;border-radius:3px;background:#0D9488}
   .star-cell{display:flex;align-items:center;justify-content:center;gap:4px}
-  .total-row td{font-weight:500;background:var(--color-background-secondary);border-top:1.5px solid var(--color-border-tertiary)}
-  .sort-btn{cursor:pointer;user-select:none;display:inline-flex;align-items:center;gap:3px}
-  .sort-btn:hover{color:var(--color-text-primary)}
-  .sort-indicator{font-size:9px;opacity:0.5}
-  .sort-indicator.active{opacity:1}
+  .email-cell{display:flex;align-items:center;justify-content:center;gap:5px}
+  .email-badge{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:20px;padding:0 6px;border-radius:10px;font-size:11px;font-weight:700;background:#DCFCE7;color:#14532D}
+  tfoot tr td{font-weight:600;background:#F8FAFC;border-top:1.5px solid #E2E8F0;color:#1E2761}
+  .sort-ind{font-size:9px;opacity:0.4;margin-left:2px}
+  .sort-ind.on{opacity:1;color:#0D9488}
+  .footnote{font-size:11px;color:#94A3B8;margin-top:14px;line-height:1.7}
+  .footnote strong{color:#64748B}
+  .legend{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:16px;font-size:12px;color:#64748B;align-items:center}
+  .li{display:flex;align-items:center;gap:5px}
+  .sw{width:12px;height:12px;border-radius:2px;flex-shrink:0}
 &lt;/style&gt;
-
-&lt;div style=&quot;padding:12px 0 0&quot;&gt;
-  &lt;div class=&quot;tab-bar&quot;&gt;
-    &lt;button class=&quot;tab b2g&quot; onclick=&quot;sw(&#x27;b2g&#x27;,this)&quot;&gt;Supplier Diversity&lt;/button&gt;
-    &lt;button class=&quot;tab&quot; onclick=&quot;sw(&#x27;ec&#x27;,this)&quot;&gt;Labor Compliance&lt;/button&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;stat-row&quot; id=&quot;stats&quot;&gt;&lt;/div&gt;
-  &lt;div style=&quot;overflow-x:auto&quot;&gt;
-    &lt;table id=&quot;tbl&quot;&gt;
-      &lt;thead&gt;
-        &lt;tr&gt;
-          &lt;th&gt;&lt;span class=&quot;sort-btn&quot; onclick=&quot;sortBy(&#x27;n&#x27;)&quot;&gt;Account &lt;span class=&quot;sort-indicator&quot; id=&quot;s-n&quot;&gt;↕&lt;/span&gt;&lt;/span&gt;&lt;/th&gt;
-          &lt;th class=&quot;r&quot;&gt;&lt;span class=&quot;sort-btn&quot; onclick=&quot;sortBy(&#x27;imp&#x27;)&quot;&gt;Impressions &lt;span class=&quot;sort-indicator active&quot; id=&quot;s-imp&quot;&gt;↓&lt;/span&gt;&lt;/span&gt;&lt;/th&gt;
-          &lt;th class=&quot;r&quot;&gt;&lt;span class=&quot;sort-btn&quot; onclick=&quot;sortBy(&#x27;clk&#x27;)&quot;&gt;Clicks &lt;span class=&quot;sort-indicator&quot; id=&quot;s-clk&quot;&gt;↕&lt;/span&gt;&lt;/span&gt;&lt;/th&gt;
-          &lt;th class=&quot;r&quot;&gt;&lt;span class=&quot;sort-btn&quot; onclick=&quot;sortBy(&#x27;ctr&#x27;)&quot;&gt;CTR &lt;span class=&quot;sort-indicator&quot; id=&quot;s-ctr&quot;&gt;↕&lt;/span&gt;&lt;/span&gt;&lt;/th&gt;
-          &lt;th class=&quot;c&quot;&gt;Platforms&lt;/th&gt;
-          &lt;th class=&quot;c&quot;&gt;&lt;span class=&quot;sort-btn&quot; onclick=&quot;sortBy(&#x27;sec&#x27;)&quot;&gt;Intent &lt;span class=&quot;sort-indicator&quot; id=&quot;s-sec&quot;&gt;↕&lt;/span&gt;&lt;/span&gt;&lt;/th&gt;
-        &lt;/tr&gt;
-      &lt;/thead&gt;
-      &lt;tbody id=&quot;tbody&quot;&gt;&lt;/tbody&gt;
-      &lt;tfoot id=&quot;tfooter&quot;&gt;&lt;/tfoot&gt;
-    &lt;/table&gt;
-  &lt;/div&gt;
-  &lt;p style=&quot;font-size:11px;color:var(--color-text-secondary);margin-top:10px;line-height:1.6&quot;&gt;
-    CTR = total clicks / total impressions across both platforms. Gold star = account independently visited /request-a-demo/ after seeing an ad (secondary conversion). Click any column header to sort.
-  &lt;/p&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;report-header&quot;&gt;
+  &lt;h1&gt;DOT Account Engagement&lt;/h1&gt;
+  &lt;p&gt;LinkedIn &amp;amp; StackAdapt &amp;amp; HubSpot Email &amp;nbsp;&amp;middot;&amp;nbsp; Department of Transportation Targeting &amp;nbsp;&amp;middot;&amp;nbsp; Feb 1 &amp;ndash; Mar 23, 2026 &amp;nbsp;&amp;middot;&amp;nbsp; Prepared by Brickwork (brick.work)&lt;/p&gt;
 &lt;/div&gt;
-
+&lt;div class=&quot;tab-bar&quot;&gt;
+  &lt;button class=&quot;tab b2g&quot; onclick=&quot;sw(&#x27;b2g&#x27;,this)&quot;&gt;Supplier Diversity&lt;/button&gt;
+  &lt;button class=&quot;tab&quot; onclick=&quot;sw(&#x27;ec&#x27;,this)&quot;&gt;Labor Compliance&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class=&quot;stat-row&quot; id=&quot;stats&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;legend&quot;&gt;
+  &lt;span class=&quot;li&quot;&gt;&lt;span class=&quot;sw&quot; style=&quot;background:#10B981&quot;&gt;&lt;/span&gt;Both platforms&lt;/span&gt;
+  &lt;span class=&quot;li&quot;&gt;&lt;span class=&quot;sw&quot; style=&quot;background:#0077B5&quot;&gt;&lt;/span&gt;LinkedIn only&lt;/span&gt;
+  &lt;span class=&quot;li&quot;&gt;&lt;span class=&quot;sw&quot; style=&quot;background:#6C3FF5&quot;&gt;&lt;/span&gt;StackAdapt only&lt;/span&gt;
+  &lt;span class=&quot;li&quot; style=&quot;gap:6px&quot;&gt;&lt;svg width=&quot;13&quot; height=&quot;13&quot; viewBox=&quot;0 0 13 13&quot;&gt;&lt;polygon points=&quot;6.5,1 8.5,5 13,5.5 9.5,9 10.5,13 6.5,10.5 2.5,13 3.5,9 0,5.5 4.5,5&quot; fill=&quot;#F59E0B&quot;/&gt;&lt;/svg&gt;Post-ad intent signal&lt;/span&gt;
+  &lt;span class=&quot;li&quot;&gt;&lt;span class=&quot;sw&quot; style=&quot;background:#DCFCE7;border:1px solid #86EFAC&quot;&gt;&lt;/span&gt;Email contacts engaged&lt;/span&gt;
+  &lt;span class=&quot;li&quot;&gt;&lt;span class=&quot;sw&quot; style=&quot;background:linear-gradient(135deg,#FFFBEB 50%,#F0FDF4 50%);border:1px solid #D1D5DB&quot;&gt;&lt;/span&gt;Both intent + email&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;table-wrap&quot;&gt;
+  &lt;table&gt;
+    &lt;thead&gt;&lt;tr&gt;
+      &lt;th onclick=&quot;sortBy(&#x27;n&#x27;)&quot;&gt;Account &lt;span class=&quot;sort-ind on&quot; id=&quot;s-n&quot;&gt;↑&lt;/span&gt;&lt;/th&gt;
+      &lt;th class=&quot;r&quot; onclick=&quot;sortBy(&#x27;imp&#x27;)&quot;&gt;Impressions &lt;span class=&quot;sort-ind&quot; id=&quot;s-imp&quot;&gt;↕&lt;/span&gt;&lt;/th&gt;
+      &lt;th class=&quot;r&quot; onclick=&quot;sortBy(&#x27;clk&#x27;)&quot;&gt;Clicks &lt;span class=&quot;sort-ind&quot; id=&quot;s-clk&quot;&gt;↕&lt;/span&gt;&lt;/th&gt;
+      &lt;th class=&quot;r&quot; onclick=&quot;sortBy(&#x27;ctr&#x27;)&quot;&gt;CTR &lt;span class=&quot;sort-ind&quot; id=&quot;s-ctr&quot;&gt;↕&lt;/span&gt;&lt;/th&gt;
+      &lt;th class=&quot;c&quot;&gt;Platforms&lt;/th&gt;
+      &lt;th class=&quot;c&quot; onclick=&quot;sortBy(&#x27;s&#x27;)&quot;&gt;Intent &lt;span class=&quot;sort-ind&quot; id=&quot;s-s&quot;&gt;↕&lt;/span&gt;&lt;/th&gt;
+      &lt;th class=&quot;c&quot; onclick=&quot;sortBy(&#x27;e&#x27;)&quot;&gt;Email &lt;span class=&quot;sort-ind&quot; id=&quot;s-e&quot;&gt;↕&lt;/span&gt;&lt;/th&gt;
+    &lt;/tr&gt;&lt;/thead&gt;
+    &lt;tbody id=&quot;tbody&quot;&gt;&lt;/tbody&gt;
+    &lt;tfoot id=&quot;tfoot&quot;&gt;&lt;/tfoot&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+&lt;p class=&quot;footnote&quot;&gt;
+  &lt;strong&gt;Impressions &amp;amp; Clicks&lt;/strong&gt; = combined LinkedIn + StackAdapt totals.&lt;br&gt;
+  &lt;strong&gt;CTR&lt;/strong&gt; = total clicks &amp;divide; total impressions across both platforms.&lt;br&gt;
+  &lt;strong&gt;Intent&lt;/strong&gt; (gold star) = account visited /request-a-demo/ independently after seeing an ad, without clicking. Number = times recorded. Source: StackAdapt secondary conversions.&lt;br&gt;
+  &lt;strong&gt;Email&lt;/strong&gt; (green badge) = number of named contacts from that DOT who opened or clicked a HubSpot email nurture sequence. Source: HubSpot email nurture series 2025&amp;ndash;2026.&lt;br&gt;
+  Gold row = paid ad intent signal present. Green row = email engagement only. Gradient row = both signals present.&lt;br&gt;
+  Note: Wyoming DOT (Labor Compliance) includes 1 contact flagged as existing customer (Jeff White). Supplier Diversity Email 2 2026: one contact recorded 30+ opens, likely email preview/bot activity, excluded from count.&lt;br&gt;&lt;br&gt;
+  &lt;strong&gt;Data:&lt;/strong&gt; LinkedIn Campaign Manager &amp;bull; StackAdapt ABM domain report &amp;bull; HubSpot email export &amp;bull; Prepared by Brickwork (brick.work)
+&lt;/p&gt;
 &lt;script&gt;
 const C={
   b2g:[
-    {n:&quot;Virginia DOT&quot;,        li_i:13543,sa_i:14938,li_c:75, sa_c:46, s:0},
-    {n:&quot;Michigan DOT&quot;,        li_i:4149, sa_i:20449,li_c:22, sa_c:181,s:3},
-    {n:&quot;NC DOT&quot;,              li_i:793,  sa_i:17541,li_c:5,  sa_c:51, s:1},
-    {n:&quot;Connecticut DOT&quot;,     li_i:6344, sa_i:11948,li_c:51, sa_c:35, s:0},
-    {n:&quot;Indiana DOT&quot;,         li_i:5062, sa_i:13085,li_c:38, sa_c:77, s:0},
-    {n:&quot;Florida DOT&quot;,         li_i:9691, sa_i:6342, li_c:65, sa_c:16, s:0},
-    {n:&quot;Illinois DOT&quot;,        li_i:4513, sa_i:9719, li_c:38, sa_c:11, s:1},
-    {n:&quot;South Carolina DOT&quot;,  li_i:2754, sa_i:10476,li_c:15, sa_c:18, s:1},
-    {n:&quot;Maine DOT&quot;,           li_i:1029, sa_i:8939, li_c:8,  sa_c:33, s:0},
-    {n:&quot;Georgia DOT&quot;,         li_i:4149, sa_i:0,    li_c:33, sa_c:0,  s:0},
-    {n:&quot;Nebraska DOT&quot;,        li_i:1564, sa_i:1894, li_c:8,  sa_c:1,  s:0},
-    {n:&quot;Kansas DOT&quot;,          li_i:2264, sa_i:838,  li_c:17, sa_c:2,  s:0},
-    {n:&quot;Arkansas DOT&quot;,        li_i:1543, sa_i:1541, li_c:10, sa_c:1,  s:0},
-    {n:&quot;Mississippi DOT&quot;,     li_i:773,  sa_i:959,  li_c:7,  sa_c:2,  s:0},
-    {n:&quot;Montana DOT&quot;,         li_i:1554, sa_i:0,    li_c:7,  sa_c:0,  s:0},
-    {n:&quot;Rhode Island DOT&quot;,    li_i:724,  sa_i:0,    li_c:7,  sa_c:0,  s:0},
-    {n:&quot;Alabama DOT&quot;,         li_i:539,  sa_i:0,    li_c:8,  sa_c:0,  s:0},
-    {n:&quot;Alaska DOT&quot;,          li_i:511,  sa_i:0,    li_c:0,  sa_c:0,  s:0},
-    {n:&quot;New Hampshire DOT&quot;,   li_i:509,  sa_i:0,    li_c:4,  sa_c:0,  s:0},
-    {n:&quot;West Virginia DOT&quot;,   li_i:473,  sa_i:0,    li_c:6,  sa_c:0,  s:0},
+    {n:&quot;Virginia DOT&quot;,       li_i:13543,sa_i:14938,li_c:75,sa_c:46,s:0,e:0},
+    {n:&quot;Michigan DOT&quot;,       li_i:4149,sa_i:20449,li_c:22,sa_c:181,s:3,e:3},
+    {n:&quot;NC DOT&quot;,             li_i:793,sa_i:17541,li_c:5,sa_c:51,s:1,e:1},
+    {n:&quot;Connecticut DOT&quot;,    li_i:6344,sa_i:11948,li_c:51,sa_c:35,s:0,e:0},
+    {n:&quot;Indiana DOT&quot;,        li_i:5062,sa_i:13085,li_c:38,sa_c:77,s:0,e:0},
+    {n:&quot;Florida DOT&quot;,        li_i:9691,sa_i:6342,li_c:65,sa_c:16,s:0,e:1},
+    {n:&quot;Illinois DOT&quot;,       li_i:4513,sa_i:9719,li_c:38,sa_c:11,s:1,e:1},
+    {n:&quot;South Carolina DOT&quot;, li_i:2754,sa_i:10476,li_c:15,sa_c:18,s:1,e:0},
+    {n:&quot;Maine DOT&quot;,          li_i:1029,sa_i:8939,li_c:8,sa_c:33,s:0,e:0},
+    {n:&quot;Georgia DOT&quot;,        li_i:4149,sa_i:0,li_c:33,sa_c:0,s:0,e:0},
+    {n:&quot;Nebraska DOT&quot;,       li_i:1564,sa_i:1894,li_c:8,sa_c:1,s:0,e:0},
+    {n:&quot;Kansas DOT&quot;,         li_i:2264,sa_i:838,li_c:17,sa_c:2,s:0,e:0},
+    {n:&quot;Arkansas DOT&quot;,       li_i:1543,sa_i:1541,li_c:10,sa_c:1,s:0,e:1},
+    {n:&quot;Mississippi DOT&quot;,    li_i:773,sa_i:959,li_c:7,sa_c:2,s:0,e:1},
+    {n:&quot;Montana DOT&quot;,        li_i:1554,sa_i:0,li_c:7,sa_c:0,s:0,e:1},
+    {n:&quot;Rhode Island DOT&quot;,   li_i:724,sa_i:0,li_c:7,sa_c:0,s:0,e:0},
+    {n:&quot;Alabama DOT&quot;,        li_i:539,sa_i:0,li_c:8,sa_c:0,s:0,e:0},
+    {n:&quot;Alaska DOT&quot;,         li_i:511,sa_i:0,li_c:0,sa_c:0,s:0,e:0},
+    {n:&quot;New Hampshire DOT&quot;,  li_i:509,sa_i:0,li_c:4,sa_c:0,s:0,e:0},
+    {n:&quot;West Virginia DOT&quot;,  li_i:473,sa_i:0,li_c:6,sa_c:0,s:0,e:1},
   ],
   ec:[
-    {n:&quot;Indiana DOT&quot;,         li_i:0,    sa_i:21725,li_c:0,  sa_c:80, s:6},
-    {n:&quot;Michigan DOT&quot;,        li_i:1768, sa_i:16632,li_c:11, sa_c:66, s:1},
-    {n:&quot;Connecticut DOT&quot;,     li_i:4622, sa_i:13758,li_c:16, sa_c:19, s:1},
-    {n:&quot;Oregon DOT&quot;,          li_i:1614, sa_i:15412,li_c:13, sa_c:36, s:3},
-    {n:&quot;Pennsylvania DOT&quot;,    li_i:3053, sa_i:11618,li_c:22, sa_c:12, s:1},
-    {n:&quot;Virginia DOT&quot;,        li_i:0,    sa_i:13648,li_c:0,  sa_c:10, s:1},
-    {n:&quot;Maine DOT&quot;,           li_i:0,    sa_i:12733,li_c:0,  sa_c:14, s:2},
-    {n:&quot;NC DOT&quot;,              li_i:0,    sa_i:10661,li_c:0,  sa_c:6,  s:0},
-    {n:&quot;Illinois DOT&quot;,        li_i:1620, sa_i:7413, li_c:5,  sa_c:1,  s:0},
-    {n:&quot;Washington State DOT&quot;,li_i:4871, sa_i:4031, li_c:20, sa_c:10, s:0},
-    {n:&quot;Colorado DOT&quot;,        li_i:2023, sa_i:5199, li_c:8,  sa_c:2,  s:0},
-    {n:&quot;Florida DOT&quot;,         li_i:0,    sa_i:6965, li_c:0,  sa_c:10, s:0},
-    {n:&quot;Missouri DOT&quot;,        li_i:2062, sa_i:4357, li_c:4,  sa_c:6,  s:0},
-    {n:&quot;South Carolina DOT&quot;,  li_i:717,  sa_i:4266, li_c:3,  sa_c:1,  s:0},
-    {n:&quot;New Hampshire DOT&quot;,   li_i:0,    sa_i:5368, li_c:0,  sa_c:2,  s:0},
-    {n:&quot;Maryland DOT&quot;,        li_i:3701, sa_i:0,    li_c:27, sa_c:0,  s:0},
-    {n:&quot;Mississippi DOT&quot;,     li_i:0,    sa_i:3677, li_c:0,  sa_c:1,  s:0},
-    {n:&quot;NY DOT&quot;,              li_i:0,    sa_i:2955, li_c:0,  sa_c:3,  s:0},
-    {n:&quot;Delaware DOT&quot;,        li_i:0,    sa_i:2864, li_c:0,  sa_c:1,  s:0},
-    {n:&quot;New Jersey DOT&quot;,      li_i:2796, sa_i:0,    li_c:13, sa_c:0,  s:0},
-    {n:&quot;NYC DOT&quot;,             li_i:2552, sa_i:0,    li_c:7,  sa_c:0,  s:0},
-    {n:&quot;Georgia DOT&quot;,         li_i:1795, sa_i:7,    li_c:10, sa_c:0,  s:0},
-    {n:&quot;Arkansas DOT&quot;,        li_i:960,  sa_i:469,  li_c:3,  sa_c:1,  s:0},
+    {n:&quot;Indiana DOT&quot;,        li_i:0,sa_i:21725,li_c:0,sa_c:80,s:6,e:0},
+    {n:&quot;Michigan DOT&quot;,       li_i:1768,sa_i:16632,li_c:11,sa_c:66,s:1,e:0},
+    {n:&quot;Connecticut DOT&quot;,    li_i:4622,sa_i:13758,li_c:16,sa_c:19,s:1,e:0},
+    {n:&quot;Oregon DOT&quot;,         li_i:1614,sa_i:15412,li_c:13,sa_c:36,s:3,e:0},
+    {n:&quot;Pennsylvania DOT&quot;,   li_i:3053,sa_i:11618,li_c:22,sa_c:12,s:1,e:2},
+    {n:&quot;Virginia DOT&quot;,       li_i:0,sa_i:13648,li_c:0,sa_c:10,s:1,e:0},
+    {n:&quot;Maine DOT&quot;,          li_i:0,sa_i:12733,li_c:0,sa_c:14,s:2,e:0},
+    {n:&quot;NC DOT&quot;,             li_i:0,sa_i:10661,li_c:0,sa_c:6,s:0,e:0},
+    {n:&quot;Illinois DOT&quot;,       li_i:1620,sa_i:7413,li_c:5,sa_c:1,s:0,e:0},
+    {n:&quot;Washington State DOT&quot;,li_i:4871,sa_i:4031,li_c:20,sa_c:10,s:0,e:0},
+    {n:&quot;Colorado DOT&quot;,       li_i:2023,sa_i:5199,li_c:8,sa_c:2,s:0,e:3},
+    {n:&quot;Florida DOT&quot;,        li_i:0,sa_i:6965,li_c:0,sa_c:10,s:0,e:0},
+    {n:&quot;Missouri DOT&quot;,       li_i:2062,sa_i:4357,li_c:4,sa_c:6,s:0,e:2},
+    {n:&quot;South Carolina DOT&quot;, li_i:717,sa_i:4266,li_c:3,sa_c:1,s:0,e:0},
+    {n:&quot;New Hampshire DOT&quot;,  li_i:0,sa_i:5368,li_c:0,sa_c:2,s:0,e:0},
+    {n:&quot;Maryland DOT&quot;,       li_i:3701,sa_i:0,li_c:27,sa_c:0,s:0,e:1},
+    {n:&quot;Mississippi DOT&quot;,    li_i:0,sa_i:3677,li_c:0,sa_c:1,s:0,e:0},
+    {n:&quot;NY DOT&quot;,             li_i:0,sa_i:2955,li_c:0,sa_c:3,s:0,e:1},
+    {n:&quot;Delaware DOT&quot;,       li_i:0,sa_i:2864,li_c:0,sa_c:1,s:0,e:0},
+    {n:&quot;New Jersey DOT&quot;,     li_i:2796,sa_i:0,li_c:13,sa_c:0,s:0,e:0},
+    {n:&quot;NYC DOT&quot;,            li_i:2552,sa_i:0,li_c:7,sa_c:0,s:0,e:0},
+    {n:&quot;Georgia DOT&quot;,        li_i:1795,sa_i:7,li_c:10,sa_c:0,s:0,e:0},
+    {n:&quot;Arkansas DOT&quot;,       li_i:960,sa_i:469,li_c:3,sa_c:1,s:0,e:0},
+    {n:&quot;Louisiana DOT&quot;,      li_i:0,sa_i:0,li_c:0,sa_c:0,s:0,e:1},
+    {n:&quot;Wyoming DOT&quot;,        li_i:0,sa_i:0,li_c:0,sa_c:0,s:0,e:2},
+    {n:&quot;DC DOT&quot;,             li_i:408,sa_i:0,li_c:0,sa_c:0,s:0,e:1},
+    {n:&quot;North Dakota DOT&quot;,   li_i:0,sa_i:0,li_c:0,sa_c:0,s:0,e:2},
   ]
 };
 
-let camp=&#x27;b2g&#x27;, sortKey=&#x27;imp&#x27;, sortDir=-1;
-const maxCTR={b2g:0,ec:0};
-[&#x27;b2g&#x27;,&#x27;ec&#x27;].forEach(k=&gt;{
-  maxCTR[k]=Math.max(...C[k].map(r=&gt;{const i=r.li_i+r.sa_i;return i?((r.li_c+r.sa_c)/i)*100:0;}));
-});
+let camp=&#x27;b2g&#x27;,sortKey=&#x27;n&#x27;,sortDir=1;
 
-function platformBadge(r){
-  const both=r.li_i&gt;0&amp;&amp;r.sa_i&gt;0;
-  const liOnly=r.li_i&gt;0&amp;&amp;r.sa_i===0;
+function pfBadge(r){
+  const both=r.li_i&gt;0&amp;&amp;r.sa_i&gt;0,liOnly=r.li_i&gt;0&amp;&amp;r.sa_i===0,saOnly=r.sa_i&gt;0&amp;&amp;r.li_i===0;
   if(both)return&#x27;&lt;span class=&quot;badge badge-both&quot;&gt;LinkedIn + StackAdapt&lt;/span&gt;&#x27;;
   if(liOnly)return&#x27;&lt;span class=&quot;badge badge-li&quot;&gt;LinkedIn&lt;/span&gt;&#x27;;
-  return&#x27;&lt;span class=&quot;badge badge-sa&quot;&gt;StackAdapt&lt;/span&gt;&#x27;;
+  if(saOnly)return&#x27;&lt;span class=&quot;badge badge-sa&quot;&gt;StackAdapt&lt;/span&gt;&#x27;;
+  return&#x27;&lt;span style=&quot;color:#94A3B8;font-size:11px&quot;&gt;Email only&lt;/span&gt;&#x27;;
+}
+
+function rowCls(r){
+  if(r.s&gt;0&amp;&amp;r.e&gt;0)return&#x27;has-both&#x27;;
+  if(r.s&gt;0)return&#x27;has-intent&#x27;;
+  if(r.e&gt;0)return&#x27;has-email&#x27;;
+  return&#x27;&#x27;;
 }
 
 function render(){
-  const data=[...C[camp]].map(r=&gt;({
-    ...r,
-    imp:r.li_i+r.sa_i,
-    clk:r.li_c+r.sa_c,
-    ctr:(r.li_i+r.sa_i)?((r.li_c+r.sa_c)/(r.li_i+r.sa_i))*100:0,
-    sec:r.s
+  const data=[...C[camp]].map(r=&gt;({...r,
+    imp:r.li_i+r.sa_i,clk:r.li_c+r.sa_c,
+    ctr:(r.li_i+r.sa_i)?((r.li_c+r.sa_c)/(r.li_i+r.sa_i))*100:0
   }));
-  data.sort((a,b)=&gt;sortDir*(typeof a[sortKey]===&#x27;string&#x27;?a[sortKey].localeCompare(b[sortKey]):a[sortKey]-b[sortKey]));
-
-  const mx=maxCTR[camp];
-  const tbody=document.getElementById(&#x27;tbody&#x27;);
-  tbody.innerHTML=data.map(r=&gt;`
-    &lt;tr class=&quot;${r.sec&gt;0?&#x27;has-intent&#x27;:&#x27;&#x27;}&quot;&gt;
-      &lt;td style=&quot;font-weight:${r.sec&gt;0?&#x27;500&#x27;:&#x27;400&#x27;}&quot;&gt;${r.n}&lt;/td&gt;
-      &lt;td class=&quot;r&quot;&gt;${r.imp.toLocaleString()}&lt;/td&gt;
-      &lt;td class=&quot;r&quot;&gt;${r.clk.toLocaleString()}&lt;/td&gt;
-      &lt;td class=&quot;r&quot;&gt;
-        &lt;div class=&quot;ctr-bar&quot;&gt;
-          &lt;div class=&quot;ctr-track&quot;&gt;&lt;div class=&quot;ctr-fill&quot; style=&quot;width:${mx&gt;0?Math.round((r.ctr/mx)*100):0}%&quot;&gt;&lt;/div&gt;&lt;/div&gt;
-          &lt;span style=&quot;min-width:36px;text-align:right&quot;&gt;${r.ctr.toFixed(2)}%&lt;/span&gt;
-        &lt;/div&gt;
-      &lt;/td&gt;
-      &lt;td class=&quot;c&quot;&gt;${platformBadge(r)}&lt;/td&gt;
-      &lt;td class=&quot;c&quot;&gt;
-        ${r.sec&gt;0?`&lt;div class=&quot;star-cell&quot;&gt;&lt;svg width=&quot;13&quot; height=&quot;13&quot; viewBox=&quot;0 0 13 13&quot;&gt;&lt;polygon points=&quot;6.5,1 8.5,5 13,5.5 9.5,9 10.5,13 6.5,10.5 2.5,13 3.5,9 0,5.5 4.5,5&quot; fill=&quot;#F59E0B&quot;/&gt;&lt;/svg&gt;&lt;span style=&quot;font-size:11px;font-weight:500;color:#92400E&quot;&gt;${r.sec}&lt;/span&gt;&lt;/div&gt;`:&#x27;&lt;span style=&quot;color:var(--color-text-secondary);font-size:11px&quot;&gt;—&lt;/span&gt;&#x27;}
-      &lt;/td&gt;
-    &lt;/tr&gt;`).join(&#x27;&#x27;);
-
-  const totImp=data.reduce((a,r)=&gt;a+r.imp,0);
-  const totClk=data.reduce((a,r)=&gt;a+r.clk,0);
-  const totCTR=totImp?((totClk/totImp)*100):0;
-  document.getElementById(&#x27;tfooter&#x27;).innerHTML=`
-    &lt;tr class=&quot;total-row&quot;&gt;
-      &lt;td&gt;Totals — ${data.length} accounts&lt;/td&gt;
-      &lt;td class=&quot;r&quot;&gt;${totImp.toLocaleString()}&lt;/td&gt;
-      &lt;td class=&quot;r&quot;&gt;${totClk.toLocaleString()}&lt;/td&gt;
-      &lt;td class=&quot;r&quot;&gt;&lt;div class=&quot;ctr-bar&quot;&gt;&lt;div class=&quot;ctr-track&quot;&gt;&lt;div class=&quot;ctr-fill&quot; style=&quot;width:100%&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;span style=&quot;min-width:36px;text-align:right&quot;&gt;${totCTR.toFixed(2)}%&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
-    &lt;/tr&gt;`;
-
-  [&#x27;n&#x27;,&#x27;imp&#x27;,&#x27;clk&#x27;,&#x27;ctr&#x27;,&#x27;sec&#x27;].forEach(k=&gt;{
-    const el=document.getElementById(&#x27;s-&#x27;+k);
-    if(el){el.textContent=k===sortKey?(sortDir===-1?&#x27;↓&#x27;:&#x27;↑&#x27;):&#x27;↕&#x27;;el.className=&#x27;sort-indicator&#x27;+(k===sortKey?&#x27; active&#x27;:&#x27;&#x27;);}
+  data.sort((a,b)=&gt;{
+    const ak=sortKey===&#x27;n&#x27;?a.n:a[sortKey];
+    const bk=sortKey===&#x27;n&#x27;?b.n:b[sortKey];
+    return sortDir*(typeof ak===&#x27;string&#x27;?ak.localeCompare(bk):ak-bk);
   });
 
-  const totImpAll=data.reduce((a,r)=&gt;a+r.imp,0);
-  const totClkAll=data.reduce((a,r)=&gt;a+r.clk,0);
-  const secAll=data.reduce((a,r)=&gt;a+r.sec,0);
-  const bothCount=data.filter(r=&gt;r.li_i&gt;0&amp;&amp;r.sa_i&gt;0).length;
+  const mx=Math.max(...data.map(r=&gt;r.ctr),0.01);
+  const tI=data.reduce((a,r)=&gt;a+r.imp,0);
+  const tC=data.reduce((a,r)=&gt;a+r.clk,0);
+  const tCTR=tI?(tC/tI*100):0;
+  const tS=data.reduce((a,r)=&gt;a+r.s,0);
+  const tE=data.reduce((a,r)=&gt;a+r.e,0);
+  const eDOTs=data.filter(r=&gt;r.e&gt;0).length;
+
   document.getElementById(&#x27;stats&#x27;).innerHTML=`
-    &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat-val&quot;&gt;${data.length}&lt;/div&gt;&lt;div class=&quot;stat-lbl&quot;&gt;DOT accounts reached&lt;/div&gt;&lt;/div&gt;
-    &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat-val&quot;&gt;${totImpAll.toLocaleString()}&lt;/div&gt;&lt;div class=&quot;stat-lbl&quot;&gt;Total impressions&lt;/div&gt;&lt;/div&gt;
-    &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat-val&quot;&gt;${totClkAll.toLocaleString()}&lt;/div&gt;&lt;div class=&quot;stat-lbl&quot;&gt;Total clicks&lt;/div&gt;&lt;/div&gt;
-    &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat-val&quot;&gt;${secAll}&lt;/div&gt;&lt;div class=&quot;stat-lbl&quot;&gt;Intent signals&lt;/div&gt;&lt;/div&gt;`;
+    &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat-val&quot;&gt;${data.length}&lt;/div&gt;&lt;div class=&quot;stat-lbl&quot;&gt;DOT accounts&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat-val&quot;&gt;${tI.toLocaleString()}&lt;/div&gt;&lt;div class=&quot;stat-lbl&quot;&gt;Total impressions&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat-val&quot;&gt;${tC.toLocaleString()}&lt;/div&gt;&lt;div class=&quot;stat-lbl&quot;&gt;Total clicks&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat-val&quot;&gt;${tS}&lt;/div&gt;&lt;div class=&quot;stat-lbl&quot;&gt;Intent signals&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat-val&quot;&gt;${tE} &lt;span style=&quot;font-size:13px;font-weight:400;color:#64748B&quot;&gt;/ ${eDOTs} DOTs&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;stat-lbl&quot;&gt;Email contacts&lt;/div&gt;&lt;/div&gt;`;
+
+  document.getElementById(&#x27;tbody&#x27;).innerHTML=data.map(r=&gt;`
+    &lt;tr class=&quot;${rowCls(r)}&quot;&gt;
+      &lt;td style=&quot;font-weight:${(r.s&gt;0||r.e&gt;0)?600:400}&quot;&gt;${r.n}&lt;/td&gt;
+      &lt;td class=&quot;r&quot;&gt;${r.imp&gt;0?r.imp.toLocaleString():&#x27;&lt;span style=&quot;color:#CBD5E1&quot;&gt;—&lt;/span&gt;&#x27;}&lt;/td&gt;
+      &lt;td class=&quot;r&quot;&gt;${r.clk&gt;0?r.clk.toLocaleString():&#x27;&lt;span style=&quot;color:#CBD5E1&quot;&gt;—&lt;/span&gt;&#x27;}&lt;/td&gt;
+      &lt;td class=&quot;r&quot;&gt;${r.imp&gt;0?`&lt;div class=&quot;ctr-bar&quot;&gt;&lt;div class=&quot;ctr-track&quot;&gt;&lt;div class=&quot;ctr-fill&quot; style=&quot;width:${Math.round(r.ctr/mx*100)}%&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;span style=&quot;min-width:38px;text-align:right&quot;&gt;${r.ctr.toFixed(2)}%&lt;/span&gt;&lt;/div&gt;`:&#x27;&lt;span style=&quot;color:#CBD5E1&quot;&gt;—&lt;/span&gt;&#x27;}&lt;/td&gt;
+      &lt;td class=&quot;c&quot;&gt;${pfBadge(r)}&lt;/td&gt;
+      &lt;td class=&quot;c&quot;&gt;${r.s&gt;0?`&lt;div class=&quot;star-cell&quot;&gt;&lt;svg width=&quot;13&quot; height=&quot;13&quot; viewBox=&quot;0 0 13 13&quot;&gt;&lt;polygon points=&quot;6.5,1 8.5,5 13,5.5 9.5,9 10.5,13 6.5,10.5 2.5,13 3.5,9 0,5.5 4.5,5&quot; fill=&quot;#F59E0B&quot;/&gt;&lt;/svg&gt;&lt;span style=&quot;font-size:12px;font-weight:700;color:#92400E&quot;&gt;${r.s}&lt;/span&gt;&lt;/div&gt;`:&#x27;&lt;span style=&quot;color:#CBD5E1&quot;&gt;—&lt;/span&gt;&#x27;}&lt;/td&gt;
+      &lt;td class=&quot;c&quot;&gt;${r.e&gt;0?`&lt;div class=&quot;email-cell&quot;&gt;&lt;svg width=&quot;14&quot; height=&quot;11&quot; viewBox=&quot;0 0 14 11&quot;&gt;&lt;rect x=&quot;0.5&quot; y=&quot;0.5&quot; width=&quot;13&quot; height=&quot;10&quot; rx=&quot;1.5&quot; fill=&quot;#DCFCE7&quot; stroke=&quot;#16A34A&quot;/&gt;&lt;path d=&quot;M0.5 2.5L7 6.5L13.5 2.5&quot; stroke=&quot;#16A34A&quot; stroke-width=&quot;1.2&quot; fill=&quot;none&quot;/&gt;&lt;/svg&gt;&lt;span class=&quot;email-badge&quot;&gt;${r.e}&lt;/span&gt;&lt;/div&gt;`:&#x27;&lt;span style=&quot;color:#CBD5E1&quot;&gt;—&lt;/span&gt;&#x27;}&lt;/td&gt;
+    &lt;/tr&gt;`).join(&#x27;&#x27;);
+
+  document.getElementById(&#x27;tfoot&#x27;).innerHTML=`&lt;tr&gt;
+    &lt;td&gt;Totals &amp;mdash; ${data.length} accounts&lt;/td&gt;
+    &lt;td class=&quot;r&quot;&gt;${tI.toLocaleString()}&lt;/td&gt;
+    &lt;td class=&quot;r&quot;&gt;${tC.toLocaleString()}&lt;/td&gt;
+    &lt;td class=&quot;r&quot;&gt;&lt;div class=&quot;ctr-bar&quot;&gt;&lt;div class=&quot;ctr-track&quot;&gt;&lt;div class=&quot;ctr-fill&quot; style=&quot;width:100%&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;span style=&quot;min-width:38px;text-align:right&quot;&gt;${tCTR.toFixed(2)}%&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td class=&quot;c&quot; style=&quot;color:#92400E&quot;&gt;${tS}&lt;/td&gt;
+    &lt;td class=&quot;c&quot;&gt;&lt;span class=&quot;email-badge&quot;&gt;${tE}&lt;/span&gt;&lt;/td&gt;
+  &lt;/tr&gt;`;
+
+  [&#x27;n&#x27;,&#x27;imp&#x27;,&#x27;clk&#x27;,&#x27;ctr&#x27;,&#x27;s&#x27;,&#x27;e&#x27;].forEach(k=&gt;{
+    const el=document.getElementById(&#x27;s-&#x27;+k);
+    if(el){el.textContent=k===sortKey?(sortDir===1?&#x27;↑&#x27;:&#x27;↓&#x27;):&#x27;↕&#x27;;el.className=&#x27;sort-ind&#x27;+(k===sortKey?&#x27; on&#x27;:&#x27;&#x27;);}
+  });
 }
 
-function sortBy(key){
-  if(sortKey===key)sortDir*=-1;
-  else{sortKey=key;sortDir=-1;}
-  render();
-}
-
+function sortBy(k){if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=-1;}render();}
 function sw(id,btn){
-  camp=id;
+  camp=id;sortKey=&#x27;n&#x27;;sortDir=1;
   document.querySelectorAll(&#x27;.tab&#x27;).forEach(t=&gt;t.className=&#x27;tab&#x27;);
   btn.className=&#x27;tab &#x27;+(id===&#x27;b2g&#x27;?&#x27;b2g&#x27;:&#x27;ec&#x27;);
-  sortKey=&#x27;imp&#x27;;sortDir=-1;
   render();
 }
-
 render();
 &lt;/script&gt;
-" style="width:100%;height:600px;border:none;"></iframe>
+&lt;/body&gt;
+&lt;/html&gt;
+" style="width:100%;height:980px;border:none;"></iframe>
         </div>
       </div>
       <div style="margin: 0 40px 36px;">
