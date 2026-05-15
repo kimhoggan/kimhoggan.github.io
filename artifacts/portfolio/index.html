@@ -1,0 +1,2348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kim Hoggan | Paid Media & Growth Marketing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a1523;
+    --slate: #2f2540;
+    --teal: #b86545;
+    --teal-light: #d88d6d;
+    --gold: #c69b63;
+    --gold-light: #ebc898;
+    --cream: #f7efe6;
+    --white: #fffdf9;
+    --text: #201827;
+    --text-mid: #55485f;
+    --text-light: #84758f;
+    --border: #e7d9cc;
+    --shadow-soft: 0 18px 60px rgba(26,21,35,0.08);
+    --shadow-card: 0 16px 44px rgba(44,31,63,0.10);
+    --surface-tint: rgba(255,255,255,0.74);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background:
+      radial-gradient(circle at top left, rgba(216,141,109,0.10), transparent 24%),
+      radial-gradient(circle at top right, rgba(198,155,99,0.10), transparent 22%),
+      linear-gradient(180deg, #fcf8f3 0%, var(--cream) 100%);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+
+  /* HERO LAYOUT */
+  .hero-photo {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .hero-photo img {
+    width: clamp(180px, 20vw, 280px);
+    height: clamp(210px, 23vw, 330px);
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 26px;
+    border: 1px solid rgba(235,200,152,0.36);
+    box-shadow: 0 24px 80px rgba(10,8,15,0.50), 0 0 0 10px rgba(255,255,255,0.04);
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(26,21,35,0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(235,200,152,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 60px;
+  }
+
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    color: var(--gold);
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold-light); }
+
+  .mobile-nav {
+    display: none;
+  }
+
+  section[id] {
+    scroll-margin-top: 120px;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at 18% 18%, rgba(216,141,109,0.16), transparent 0 28%),
+      radial-gradient(circle at 82% 14%, rgba(198,155,99,0.18), transparent 0 24%),
+      linear-gradient(135deg, #18131f 0%, #22192e 42%, #2b1f39 100%);
+    display: flex;
+    align-items: center;
+    padding: 100px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -160px;
+    width: 680px; height: 680px;
+    background: radial-gradient(circle, rgba(184,101,69,0.20) 0%, transparent 62%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 520px; height: 520px;
+    background: radial-gradient(circle, rgba(198,155,99,0.13) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr clamp(220px, 24vw, 310px);
+    gap: clamp(32px, 6vw, 88px);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-content {
+    min-width: 0;
+  }
+
+  .hero-photo {
+    justify-content: flex-end;
+    align-self: center;
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner {
+      grid-template-columns: minmax(0, 1fr) 120px;
+      gap: 24px;
+      align-items: start;
+    }
+    .hero-photo {
+      justify-content: flex-end;
+      align-self: start;
+      padding-top: 12px;
+    }
+    .hero-photo img {
+      width: 140px;
+      height: 165px;
+    }
+    .hero-summary {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .hero-photo {
+      order: 0;
+      justify-content: flex-end;
+      margin-bottom: 8px;
+      padding-top: 0;
+    }
+    .hero-photo img {
+      width: 120px;
+      height: 145px;
+    }
+  }
+
+  .hero-eyebrow {
+    display: inline-block;
+    background: rgba(184,101,69,0.16);
+    border: 1px solid rgba(216,141,109,0.28);
+    color: #f0ba9b;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  h1.hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 12px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  h1.hero-name em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-title {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    margin-bottom: 36px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-summary {
+    max-width: 620px;
+    color: rgba(255,255,255,0.72);
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin-bottom: 48px;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    margin-bottom: 48px;
+    animation: fadeUp 0.6s 0.4s ease both;
+    flex-wrap: wrap;
+  }
+
+  .stat-item {}
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.5s ease both;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%);
+    color: white;
+    padding: 13px 28px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    box-shadow: 0 12px 30px rgba(184,101,69,0.25);
+    transition: transform 0.15s, box-shadow 0.2s;
+  }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 16px 36px rgba(184,101,69,0.32); }
+
+  .btn-outline {
+    border: 1px solid rgba(255,255,255,0.20);
+    color: rgba(255,255,255,0.84);
+    padding: 13px 28px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* SCROLL INDICATOR */
+  .scroll-hint {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    animation: fadeUp 1s 1s ease both;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 36px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* SECTION STYLES */
+  section { padding: 96px 48px; }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 48px;
+  }
+
+  .section-title::after {
+    content: '';
+    display: block;
+    width: 72px;
+    height: 3px;
+    margin-top: 18px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--teal) 0%, var(--gold) 100%);
+  }
+
+  /* EXPERTISE */
+  .expertise-section { background: rgba(255,253,249,0.84); backdrop-filter: blur(10px); }
+
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+
+  .expertise-card {
+    border: 1px solid rgba(231,217,204,0.9);
+    border-top: 3px solid var(--teal);
+    background: linear-gradient(180deg, rgba(255,253,249,0.94) 0%, rgba(255,250,245,0.88) 100%);
+    padding: 28px;
+    border-radius: 18px;
+    box-shadow: var(--shadow-soft);
+    transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+  }
+  .expertise-card:hover { box-shadow: var(--shadow-card); transform: translateY(-4px); border-color: rgba(184,101,69,0.30); }
+
+  .expertise-icon {
+    width: 40px; height: 40px;
+    background: rgba(26,127,127,0.1);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+    font-size: 1.2rem;
+  }
+
+  .expertise-card h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+
+  .expertise-card p {
+    font-size: 0.87rem;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+
+  /* CASE STUDIES */
+  .cases-section { background: linear-gradient(180deg, #f8f1e8 0%, #f4ebdf 100%); }
+
+  .case-study {
+    background: rgba(255,253,249,0.94);
+    border: 1px solid rgba(231,217,204,0.92);
+    border-radius: 24px;
+    margin-bottom: 48px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: box-shadow 0.25s, transform 0.2s, border-color 0.2s;
+  }
+  .case-study:hover { box-shadow: var(--shadow-card); transform: translateY(-3px); border-color: rgba(184,101,69,0.26); }
+
+  .case-header {
+    padding: 36px 40px 28px;
+    border-bottom: 1px solid rgba(231,217,204,0.9);
+    background: linear-gradient(180deg, rgba(255,255,255,0.68) 0%, rgba(255,251,246,0.72) 100%);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .case-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin-bottom: 12px;
+  }
+
+  .tag-b2b { background: rgba(26,127,127,0.12); color: var(--teal); }
+  .tag-social { background: rgba(201,168,76,0.15); color: #8a6d20; }
+  .tag-search { background: rgba(15,31,56,0.08); color: var(--navy); }
+
+  .case-header h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .case-meta {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .case-meta span { display: flex; align-items: center; gap: 5px; }
+
+  .case-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 200px;
+  }
+
+  .metric-chip {
+    background: linear-gradient(135deg, #251a34 0%, #38294b 100%);
+    color: var(--white);
+    padding: 11px 16px;
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid rgba(235,200,152,0.08);
+    box-shadow: 0 10px 24px rgba(26,21,35,0.18);
+  }
+  .metric-chip .mnum {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+  }
+  .metric-chip .mlabel {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 3px;
+  }
+
+  .case-body {
+    padding: 36px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .case-col h4 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 14px;
+  }
+
+  .case-col p, .case-col li {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+
+  .case-col ul { padding-left: 0; list-style: none; }
+  .case-col li {
+    padding-left: 16px;
+    position: relative;
+    margin-bottom: 6px;
+  }
+  .case-col li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 9px;
+    width: 6px; height: 1px;
+    background: var(--teal);
+  }
+
+  /* RESULTS TABLE */
+  .results-table-wrap {
+    padding: 0 40px 36px;
+  }
+
+  .results-table-wrap h4 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 16px;
+  }
+
+  table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+  }
+  .data-table th {
+    background: var(--navy);
+    color: rgba(255,255,255,0.7);
+    font-weight: 500;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    text-align: left;
+  }
+  .data-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-mid);
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:nth-child(even) td { background: #f4f1ec; }
+  .data-table .highlight td {
+    background: rgba(26,127,127,0.07);
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .data-table .val-up { color: #1a7f55; font-weight: 600; }
+  .data-table .val-down { color: #c0392b; font-weight: 600; }
+
+  /* QUOTE CALLOUT */
+  .case-quote {
+    margin: 0 40px 36px;
+    padding: 22px 24px;
+    border-left: 3px solid var(--gold);
+    background: linear-gradient(90deg, rgba(198,155,99,0.14) 0%, rgba(198,155,99,0.05) 100%);
+    border-radius: 0 16px 16px 0;
+  }
+  .case-quote p {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--navy);
+    line-height: 1.6;
+  }
+
+  /* AI SYSTEMS SECTION */
+  .ai-section {
+    background: linear-gradient(180deg, #17111f 0%, #22182d 100%);
+    padding: 96px 48px;
+    border-top: 1px solid rgba(235,200,152,0.14);
+    border-bottom: 1px solid rgba(235,200,152,0.14);
+  }
+
+  .ai-intro {
+    max-width: 720px;
+    color: rgba(255,255,255,0.65);
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin-bottom: 56px;
+  }
+
+  .ai-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .ai-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.03) 100%);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-top: 3px solid var(--gold);
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .ai-card:hover {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(255,255,255,0.2);
+    border-top-color: var(--gold-light);
+  }
+
+  .ai-card-top {
+    padding: 28px 28px 20px;
+    flex: 1;
+  }
+
+  .ai-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.25);
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin-bottom: 14px;
+  }
+
+  .ai-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 14px;
+  }
+
+  .ai-desc {
+    font-size: 0.87rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+  }
+
+  .ai-card-bottom {
+    padding: 20px 28px 28px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .ai-detail {}
+  .ai-detail-label {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 4px;
+  }
+  .ai-detail-val {
+    font-size: 0.83rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .ai-section { padding: 72px 24px; }
+    .ai-cards { grid-template-columns: 1fr; }
+  }
+
+  /* SKILLS SECTION */
+  .skills-section { background: linear-gradient(180deg, #1b1524 0%, #24192f 100%); }
+  .skills-section .section-title { color: var(--white); }
+  .skills-section .section-label { color: var(--teal-light); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 32px;
+  }
+
+  .skills-col h4 {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .skill-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.10);
+    color: rgba(255,255,255,0.82);
+    font-size: 0.8rem;
+    padding: 7px 12px;
+    border-radius: 999px;
+    margin: 4px 4px 0 0;
+    transition: background 0.2s;
+  }
+  .skill-tag:hover { background: rgba(26,127,127,0.25); border-color: var(--teal-light); }
+
+  /* CERTIFICATIONS */
+  .cert-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .cert-badge {
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold-light);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 6px 14px;
+    border-radius: 2px;
+  }
+
+  /* CONTACT */
+  .contact-section { background: linear-gradient(180deg, #f6eee6 0%, #fbf7f2 100%); text-align: center; }
+  .contact-section .section-title { margin-bottom: 16px; }
+
+  .contact-sub {
+    font-size: 1rem;
+    color: var(--text-mid);
+    margin-bottom: 40px;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #24192f 0%, #38294b 100%);
+    color: var(--white);
+    padding: 13px 24px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: background 0.2s;
+  }
+  .contact-link:hover { background: var(--teal); }
+
+  /* FOOTER */
+  footer {
+    background: #19131f;
+    color: rgba(255,255,255,0.42);
+    text-align: center;
+    padding: 28px 48px;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    html {
+      scroll-snap-type: y proximity;
+    }
+
+    body {
+      background: linear-gradient(180deg, #1a1523 0%, #24192f 100%);
+    }
+
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+
+    .mobile-nav {
+      display: flex;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      z-index: 99;
+      gap: 10px;
+      padding: 12px 16px;
+      overflow-x: auto;
+      background: rgba(15,31,56,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .mobile-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .mobile-nav a {
+      flex: 0 0 auto;
+      text-decoration: none;
+      color: rgba(255,255,255,0.78);
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.07);
+      border-radius: 999px;
+      padding: 9px 14px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    section {
+      padding: 96px 24px 72px;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+
+    .hero,
+    .expertise-section,
+    .cases-section,
+    .skills-section,
+    .contact-section {
+      min-height: 100svh;
+    }
+
+    .hero { padding: 148px 24px 72px; }
+    .expertise-section,
+    .cases-section,
+    .skills-section,
+    .contact-section { padding-top: 148px; }
+
+    section[id] {
+      scroll-margin-top: 124px;
+    }
+
+    .case-header { grid-template-columns: 1fr; }
+    .case-metrics { flex-direction: row; }
+    .case-body { grid-template-columns: 1fr; gap: 24px; }
+    .case-header, .case-body { padding: 24px; }
+    .results-table-wrap { padding: 0 24px 24px; }
+    .case-quote { margin: 0 24px 24px; }
+    .hero-stats { gap: 28px; }
+  }
+
+  /* SMOOTH REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* OPTION B: Abstract background */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1535016120720-40c646be5580?w=1600&h=900&fit=crop');
+    background-size: cover;
+    background-position: center;
+    filter: blur(3px) brightness(0.22) saturate(0.6);
+    transform: scale(1.06);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(24,19,31,0.75) 0%, rgba(34,25,46,0.60) 55%, rgba(43,31,57,0.72) 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero-photo-wrap {
+    position: relative;
+    display: inline-block;
+  }
+  .hero-photo-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, rgba(198,155,99,0.4) 0%, rgba(184,101,69,0.2) 100%);
+    filter: blur(16px);
+    z-index: 0;
+  }
+  .hero-photo-wrap img {
+    position: relative;
+    z-index: 1;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Kim Hoggan</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Case Studies</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="mobile-nav">
+  <a href="#about">About</a>
+  <a href="#services">What I Do</a>
+  <a href="#work">Case Studies</a>
+  <a href="#skills">Skills</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+    <span class="hero-eyebrow">Paid Media &amp; Growth Marketing</span>
+    <h1 class="hero-name">Kim <em>Hoggan</em></h1>
+    <p class="hero-title">Growth Marketing Strategist &nbsp;|&nbsp; Demand Generation &nbsp;|&nbsp; Paid Media &amp; Analytics</p>
+    <p class="hero-summary">
+      I help companies build marketing programs that actually move pipeline. From demand generation and ABM to paid search, email nurture, and multi-channel campaign strategy, I work across the full funnel to connect marketing activity to business outcomes. My approach starts with the data, fixing measurement, surfacing the right signals, and building the structure that makes scaling possible.
+    </p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">$100k+</span>
+        <span class="stat-label">Monthly spend managed</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">10x+</span>
+        <span class="stat-label">Revenue per lead improvement</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">250%</span>
+        <span class="stat-label">Lead volume growth in one quarter</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">7+</span>
+        <span class="stat-label">Industries served</span>
+      </div>
+    </div>
+    <div class="hero-cta">
+      <a href="#work" class="btn-primary">View Case Studies</a>
+      <a href="mailto:k.hoggan@gmail.com" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  </div>
+    <div class="hero-photo">
+      <div class="hero-photo-wrap">
+        <img src="/kim-hoggan.png" alt="Kim Hoggan" />
+      </div>
+    </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section class="expertise-section" id="services">
+  <div class="section-inner">
+    <p class="section-label">What I Do</p>
+    <h2 class="section-title">Full-Funnel Paid Media<br>That Drives Real Outcomes</h2>
+    <div class="expertise-grid">
+      <div class="expertise-card reveal">
+        <div class="expertise-icon">&#128269;</div>
+        <h3>Paid Search Strategy</h3>
+        <p>Google Ads account builds, restructures, and ongoing optimization. Specializing in B2B demand gen, high-intent keyword architecture, and branded vs. non-branded separation.</p>
+      </div>
+      <div class="expertise-card reveal">
+        <div class="expertise-icon">&#128202;</div>
+        <h3>Data &amp; Attribution</h3>
+        <p>Conversion tracking audits, UTM standardization, GA4 alignment, and closed-loop reporting setup connecting ad platforms to CRM and Salesforce.</p>
+      </div>
+      <div class="expertise-card reveal">
+        <div class="expertise-icon">&#127775;</div>
+        <h3>B2B Demand Generation</h3>
+        <p>Multi-channel ABM campaigns across LinkedIn, StackAdapt, and Google. Account-level engagement reporting and intent signal analysis for enterprise sales teams.</p>
+      </div>
+      <div class="expertise-card reveal">
+        <div class="expertise-icon">&#128241;</div>
+        <h3>Social Media &amp; Community</h3>
+        <p>Organic and paid social strategy for brand awareness and event marketing. Proven results driving measurable engagement and revenue lift for local and regional brands.</p>
+      </div>
+      <div class="expertise-card reveal">
+        <div class="expertise-icon">&#9881;</div>
+        <h3>Marketing Operations</h3>
+        <p>HubSpot workflow builds, lead management, campaign tracking, and nurture sequence development. Email campaign architecture mapped to buyer journey stages.</p>
+      </div>
+      <div class="expertise-card reveal">
+        <div class="expertise-icon">&#128196;</div>
+        <h3>Reporting &amp; Deliverables</h3>
+        <p>Client-facing reports, interactive HTML dashboards, and reusable reporting frameworks built for clarity. Designed to surface what matters and eliminate noise.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="cases-section" id="work">
+  <div class="section-inner">
+    <p class="section-label">Case Studies</p>
+    <h2 class="section-title">Results Across Accounts,<br>Industries, and Challenges</h2>
+
+    <!-- CASE 1: National B2B Services (ARWX) -->
+    <div class="case-study reveal">
+      <div class="case-header">
+        <div>
+          <span class="case-tag tag-b2b">B2B Paid Search</span>
+          <h2>Rebuilding a National B2B Paid Search Program After Agency Transition</h2>
+          <div class="case-meta">
+            <span>&#128198; July 2025 &ndash; Present</span>
+            <span>&#128205; National</span>
+            <span>&#127757; Google Search, Performance Max, Display</span>
+          </div>
+        </div>
+        <div class="case-metrics">
+          <div class="metric-chip">
+            <span class="mnum">10x+</span>
+            <span class="mlabel">Revenue per lead YoY</span>
+          </div>
+          <div class="metric-chip">
+            <span class="mnum">50%+</span>
+            <span class="mlabel">YoY lead growth</span>
+          </div>
+          <div class="metric-chip">
+            <span class="mnum">4.0x</span>
+            <span class="mlabel">Marketing ROI</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-col">
+          <h4>The Challenge</h4>
+          <p>Inherited an account heavily reliant on Performance Max (approximately 90% of spend) with branded keywords inflating reported conversions. Leadership had no clear view into what was actually driving non-branded demand. Conversion tracking inconsistencies made month-over-month comparison unreliable.</p>
+        </div>
+        <div class="case-col">
+          <h4>What I Did</h4>
+          <ul>
+            <li>Separated branded vs. non-branded search into dedicated campaigns</li>
+            <li>Repositioned Performance Max as a secondary, governed channel</li>
+            <li>Excluded branded keywords from PMax to prevent performance inflation</li>
+            <li>Implemented Dynamic Keyword Insertion and location personalization</li>
+            <li>Standardized UTM parameters across all SEM for GA4 alignment</li>
+            <li>Audited and corrected form submission tracking errors</li>
+            <li>Built a negative keyword list to eliminate wasted spend</li>
+            <li>Initiated Salesforce to Google Ads closed-loop reporting alignment</li>
+          </ul>
+        </div>
+      </div>
+      <div class="results-table-wrap">
+        <h4>Year-over-Year Business Impact</h4>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Period</th>
+              <th>Leads</th>
+              <th>Closed Revenue</th>
+              <th>Revenue per Lead</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>October 2024</td>
+              <td>175</td>
+              <td>$43,503</td>
+              <td>$249</td>
+            </tr>
+            <tr>
+              <td>November 2024</td>
+              <td>126</td>
+              <td>$315,489</td>
+              <td>$2,504</td>
+            </tr>
+            <tr class="highlight">
+              <td>October 2025</td>
+              <td class="val-up">269 (+54%)</td>
+              <td class="val-up">$1,106,969</td>
+              <td class="val-up">$4,114 (+1,552%)</td>
+            </tr>
+            <tr class="highlight">
+              <td>November 2025</td>
+              <td class="val-up">257 (+104%)</td>
+              <td class="val-up">$896,072</td>
+              <td class="val-up">$3,487 (+39%)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="case-quote">
+        <p>"My first priority was fixing measurement before scaling spend. We removed branded inflation so leadership could actually trust non-brand performance."</p>
+      </div>
+
+      <!-- CLOSED-LOOP ATTRIBUTION SECTION -->
+      <div class="results-table-wrap" style="padding-top: 0;">
+        <div style="background: linear-gradient(135deg, rgba(26,21,35,0.04) 0%, rgba(198,155,99,0.07) 100%); border: 1px solid rgba(198,155,99,0.22); border-left: 3px solid var(--teal); border-radius: 0 12px 12px 0; padding: 22px 24px 18px; margin-bottom: 24px;">
+          <h4 style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 8px;">Closed-Loop Attribution Results</h4>
+          <p style="font-size: 0.88rem; color: var(--text-mid); line-height: 1.7; margin: 0;">The Salesforce-to-Google Ads GCLID integration I built made it possible to track every Google Ads lead through the full sales funnel, from form fill to verified lead to closed revenue. The data below reflects approximately three months of closed-loop reporting and reveals a meaningful quality signal: Google Ads leads convert to verified leads at twice the rate of the overall lead pool, 40% vs. a 20% company-wide average.</p>
+        </div>
+
+        <h4>Lead Quality: Google Ads vs. Overall Program</h4>
+        <table class="data-table">
+          <thead>
+            <tr><th>Segment</th><th>Verified Lead Rate</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>All Leads (Company-Wide)</td><td>20%</td></tr>
+            <tr class="highlight"><td>Google Ads Leads</td><td class="val-up">40% (2x average)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="results-table-wrap">
+        <h4>Verified Lead to Opportunity Conversion (Feb &ndash; Apr 2026)</h4>
+        <table class="data-table">
+          <thead>
+            <tr><th>Month</th><th>Verified Leads</th><th>Opportunities</th><th>Conversion %</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Feb 2026</td><td>58</td><td>14</td><td>24.1%</td></tr>
+            <tr><td>Mar 2026</td><td>48</td><td>21</td><td>43.8%</td></tr>
+            <tr class="highlight"><td>Apr 2026</td><td>50</td><td>31</td><td class="val-up">62.0%</td></tr>
+            <tr class="highlight"><td><strong>Total</strong></td><td><strong>156</strong></td><td><strong>66</strong></td><td class="val-up"><strong>42.3%</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- CASE 2: TempArmour -->
+    <div class="case-study reveal">
+      <div class="case-header">
+        <div>
+          <span class="case-tag tag-search">B2B Lead Generation</span>
+          <h2>250% Lead Growth in One Quarter for Industrial B2B Brand</h2>
+          <div class="case-meta">
+            <span>&#128198; Q3&ndash;Q4</span>
+            <span>&#127757; Google Ads</span>
+            <span>&#128205; National</span>
+          </div>
+        </div>
+        <div class="case-metrics">
+          <div class="metric-chip">
+            <span class="mnum">250%</span>
+            <span class="mlabel">Lead growth</span>
+          </div>
+          <div class="metric-chip">
+            <span class="mnum">+453%</span>
+            <span class="mlabel">Impressions growth</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-col">
+          <h4>The Challenge</h4>
+          <p>The account was generating roughly 8 to 10 leads per month with limited visibility. The goal was to meaningfully scale both awareness and lead volume while maintaining quality for a specialized industrial product audience.</p>
+        </div>
+        <div class="case-col">
+          <h4>What I Did</h4>
+          <ul>
+            <li>Rebuilt campaign structure for audience clarity and intent alignment</li>
+            <li>Expanded top-of-funnel reach through strategic keyword expansion</li>
+            <li>Optimized ad relevance and landing page alignment</li>
+            <li>Monitored CTR and conversion rate as scale increased</li>
+            <li>Maintained lead quality discipline throughout volume growth</li>
+          </ul>
+        </div>
+      </div>
+      <div class="results-table-wrap">
+        <h4>Four-Month Performance Progression</h4>
+        <table class="data-table">
+          <thead>
+            <tr><th>Month</th><th>Impressions</th><th>Clicks</th><th>Leads</th><th>Change vs. Baseline</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Baseline</td><td>17,000</td><td>1,042</td><td>8</td><td>&#8212;</td></tr>
+            <tr><td>September</td><td>19,668</td><td>1,166</td><td>10</td><td>+25%</td></tr>
+            <tr><td>October</td><td>48,344</td><td>1,997</td><td>23</td><td class="val-up">+188%</td></tr>
+            <tr><td>November</td><td>220,300</td><td>3,371</td><td>26</td><td class="val-up">+225%</td></tr>
+            <tr class="highlight"><td>December</td><td>229,000</td><td>3,825</td><td>28</td><td class="val-up">+250%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- CASE 3: PLA / National Logistics -->
+    <div class="case-study reveal">
+      <div class="case-header">
+        <div>
+          <span class="case-tag tag-b2b">Paid Search Turnaround</span>
+          <h2>Reactivating a Stalled Account for a National Logistics Provider</h2>
+          <div class="case-meta">
+            <span>&#128198; November 2024 &ndash; Present</span>
+            <span>&#127757; Google Ads</span>
+            <span>&#128205; National</span>
+          </div>
+        </div>
+        <div class="case-metrics">
+          <div class="metric-chip">
+            <span class="mnum">+50%</span>
+            <span class="mlabel">Conversions MoM</span>
+          </div>
+          <div class="metric-chip">
+            <span class="mnum">&minus;20%</span>
+            <span class="mlabel">Cost per acquisition</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-col">
+          <h4>The Challenge</h4>
+          <p>When the account was inherited in November, ad spend was significantly under target due to restrictive budget settings. Conversions were steadily declining and conversion tracking contained duplicates, including a page view counted as a primary conversion, making performance data unreliable.</p>
+        </div>
+        <div class="case-col">
+          <h4>What I Did</h4>
+          <ul>
+            <li>Raised Target CPAs to reduce lost impression share to competitors</li>
+            <li>Switched campaigns to Maximize Clicks to re-activate volume</li>
+            <li>Removed device bid adjustments to let Google optimize naturally</li>
+            <li>Turned off Display Network on Search campaigns</li>
+            <li>Paused high-spend, low-converting keywords</li>
+            <li>Cleaned conversion tracking, removed duplicates and page view primary</li>
+            <li>Added Dynamic Search Ads for broader coverage</li>
+            <li>Implemented keyword and location insertion in ad copy</li>
+          </ul>
+        </div>
+      </div>
+      <div class="results-table-wrap">
+        <h4>Account-Level Results (November 2024 &ndash; Present)</h4>
+        <table class="data-table">
+          <thead>
+            <tr><th>Metric</th><th>Change</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Conversions (MoM)</td><td class="val-up">+50%</td></tr>
+            <tr><td>Cost per Acquisition</td><td class="val-up">&minus;20%</td></tr>
+            <tr><td>Conversion Rate</td><td class="val-up">+13%</td></tr>
+            <tr><td>Click-Through Rate</td><td class="val-up">+16%</td></tr>
+            <tr><td>Cost per Click</td><td class="val-up">&minus;13%</td></tr>
+            <tr><td>Ad Spend (toward target)</td><td class="val-up">+15%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="results-table-wrap">
+        <h4>Performance Snapshot &mdash; Conversions vs. Cost/Conv. Over Time</h4>
+        <img src="/kim-hoggan.png" alt="Google Ads performance chart showing conversions rising and cost per conversion falling after account takeover" style="width:100%;border-radius:4px;border:1px solid #e2ddd6;margin-top:8px" />
+        <p style="font-size:0.78rem;color:#7a8799;margin-top:8px">Red line = conversions (rising). Green line = cost per conversion (falling). Arrow marks account takeover point.</p>
+      </div>
+    </div>
+
+    <!-- CASE 4: Relittle (John Deere dealership) -->
+    <div class="case-study reveal">
+      <div class="case-header">
+        <div>
+          <span class="case-tag tag-search">Account Optimization</span>
+          <h2>88% CTR Lift and 99% Conversion Growth for John Deere Equipment Dealer</h2>
+          <div class="case-meta">
+            <span>&#128198; January 2025 &ndash; Present</span>
+            <span>&#127757; Google Ads</span>
+            <span>&#128205; Regional</span>
+          </div>
+        </div>
+        <div class="case-metrics">
+          <div class="metric-chip">
+            <span class="mnum">+99%</span>
+            <span class="mlabel">Total conversions YoY</span>
+          </div>
+          <div class="metric-chip">
+            <span class="mnum">&minus;41%</span>
+            <span class="mlabel">Cost per conversion</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-col">
+          <h4>The Challenge</h4>
+          <p>Took over an account with underperforming ad copy, unoptimized bidding, and display network campaigns that weren't serving. Paid traffic was limited, organic performance lagged, and wasted spend was draining budget through poor keyword quality and irrelevant placements.</p>
+        </div>
+        <div class="case-col">
+          <h4>What I Did</h4>
+          <ul>
+            <li>Added keyword insertion and location insertion to ad copy</li>
+            <li>Paused keywords with quality scores under 5 and no conversions</li>
+            <li>Removed Search Partners network (triple the CPA of Google Search)</li>
+            <li>Removed device bid adjustments for cleaner optimization signals</li>
+            <li>Launched Dynamic Search Ads for products and services</li>
+            <li>Resolved display campaign delivery issues by rebuilding audience targeting and bid strategy</li>
+            <li>Refreshed ad copy with promotional messaging tied to active offers</li>
+            <li>Paused the third RSA with the lowest CTR and conversion rate</li>
+          </ul>
+        </div>
+      </div>
+      <div class="results-table-wrap">
+        <h4>Performance Improvements (Jan&ndash;Apr 2025 vs. Prior Period)</h4>
+        <table class="data-table">
+          <thead>
+            <tr><th>Metric</th><th>Jan&ndash;Apr 2025</th><th>Full Year (Jan&ndash;Dec 2025 vs. Prior)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Conversions</td><td class="val-up">+51%</td><td class="val-up">+99%</td></tr>
+            <tr><td>CTR</td><td class="val-up">+88%</td><td>&mdash;</td></tr>
+            <tr><td>Cost per Conversion</td><td class="val-up">&minus;26%</td><td class="val-up">&minus;41%</td></tr>
+            <tr><td>Conversion Rate</td><td class="val-up">+18%</td><td>&mdash;</td></tr>
+            <tr><td>Phone Calls</td><td class="val-up">+55%</td><td>&mdash;</td></tr>
+            <tr><td>CPC</td><td class="val-up">&minus;16%</td><td>&mdash;</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- CASE 5: TCB Social Media -->
+    <div class="case-study reveal">
+      <div class="case-header">
+        <div>
+          <span class="case-tag tag-social">Social Media Management &amp; Event Marketing</span>
+          <h2>40% Follower Growth and 63% Revenue Lift for Local Bottle Shop &amp; Beer Garden</h2>
+          <div class="case-meta">
+            <span>&#128198; July 2025 &ndash; Present</span>
+            <span>&#127757; Facebook, Instagram, Local Groups</span>
+            <span>&#128205; Fuquay-Varina, NC</span>
+          </div>
+        </div>
+        <div class="case-metrics">
+          <div class="metric-chip">
+            <span class="mnum">+63%</span>
+            <span class="mlabel">Oktoberfest revenue YoY</span>
+          </div>
+          <div class="metric-chip">
+            <span class="mnum">+40%</span>
+            <span class="mlabel">Followers (8 months)</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-col">
+          <h4>The Challenge</h4>
+          <p>The Corner Biergarten (TCB) is a bottle shop and beer garden in a hidden location in Fuquay-Varina, NC. When I took over social media management in July 2025, the goal was to build a consistent community presence on Facebook and Instagram that would drive foot traffic, grow their local audience, and turn seasonal events into meaningful revenue moments, all through organic content with no paid advertising budget.</p>
+        </div>
+        <div class="case-col">
+          <h4>What I Do</h4>
+          <ul>
+            <li>Manage all Facebook and Instagram content strategy and posting cadence</li>
+            <li>Write and publish posts tailored for TCB's audience and three local community Facebook groups</li>
+            <li>Create interactive Stories to build ongoing engagement between events</li>
+            <li>Design event-specific campaigns with sequenced content waves: awareness, engagement, countdown, and final call</li>
+            <li>Coordinate community group outreach to amplify reach organically</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="results-table-wrap">
+        <h4>Part 1 &mdash; Oktoberfest Event Campaign (September 2025)</h4>
+        <table class="data-table">
+          <thead>
+            <tr><th>Metric</th><th>Result</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Event Revenue vs. Prior Year</td><td class="val-up">+63%</td></tr>
+            <tr><td>Facebook Followers (90-day campaign period)</td><td class="val-up">+127%</td></tr>
+            <tr><td>Instagram Followers (90-day campaign period)</td><td class="val-up">+75%</td></tr>
+            <tr><td>Community group touchpoints</td><td>3 groups, 12+ posts</td></tr>
+            <tr><td>Interactive Stories published</td><td>8 polls and trivia</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="results-table-wrap">
+        <h4>Part 2 &mdash; Ongoing Social Media Management (July 2025 &ndash; March 2026 vs. Prior Period)</h4>
+        <table class="data-table">
+          <thead>
+            <tr><th>Metric</th><th>Change</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Followers</td><td class="val-up">+40%</td></tr>
+            <tr><td>Facebook Page Visits</td><td class="val-up">+27%</td></tr>
+            <tr><td>Content Interactions</td><td class="val-up">+63%</td></tr>
+            <tr><td>Video Views</td><td class="val-up">+35%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- CASE 6: B2Gnow / eComply ABM -->
+    <div class="case-study reveal">
+      <div class="case-header">
+        <div>
+          <span class="case-tag tag-b2b">ABM Strategy &amp; Execution</span>
+          <h2>Full-Funnel ABM Campaign for Government Technology Company Targeting State DOTs Nationally</h2>
+          <div class="case-meta">
+            <span>&#128198; September 2025 &ndash; Present</span>
+            <span>&#127757; LinkedIn, StackAdapt, HubSpot Email</span>
+            <span>&#128205; National &mdash; State Departments of Transportation</span>
+          </div>
+        </div>
+        <div class="case-metrics">
+          <div class="metric-chip">
+            <span class="mnum">47</span>
+            <span class="mlabel">DOT accounts reached</span>
+          </div>
+          <div class="metric-chip">
+            <span class="mnum">3</span>
+            <span class="mlabel">Channels coordinated</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-col">
+          <h4>The Challenge</h4>
+          <p>The client offers two distinct products targeting state Departments of Transportation: a Supplier Diversity management platform and a labor compliance and certified payroll reporting solution. Government buyers operate on long procurement cycles, make decisions by committee, and rarely fill out forms early in their journey. The challenge was building a coordinated ABM program that could generate measurable engagement across a highly specific named account list, with no paid search intent to rely on, while surfacing meaningful buying signals for the sales team.</p>
+        </div>
+        <div class="case-col">
+          <h4>What I Did</h4>
+          <ul>
+            <li>Designed the full 3-stage campaign strategy: audience building, engagement and nurture, retargeting and conversion</li>
+            <li>Built and maintained the named account target list across state DOT agencies nationally</li>
+            <li>Launched coordinated LinkedIn and StackAdapt ABM campaigns for both B2Gnow and eComply product tracks simultaneously</li>
+            <li>Wrote LinkedIn ad copy, InMail sequences, and 4-email nurture series for each product track</li>
+            <li>Configured HubSpot workflows to enroll contacts after content downloads and trigger sales alerts on warm leads</li>
+            <li>Built client-facing interactive reporting deliverables: account-level engagement tables, cross-platform bar charts, and video completion reports by named DOT account</li>
+            <li>Tracked post-ad intent signals (demo page visits without a click) as the primary buying signal for government accounts</li>
+            <li>Proposed and designed a focused 1:1 content strategy for prioritizing high-value individual DOT targets</li>
+          </ul>
+        </div>
+      </div>
+      <div class="results-table-wrap">
+        <h4>Campaign Engagement &mdash; Feb 1 &ndash; Mar 23, 2026</h4>
+        <table class="data-table">
+          <thead>
+            <tr><th>Product Track</th><th>DOT Accounts</th><th>Total Impressions</th><th>Total Clicks</th><th>Intent Signals</th><th>Email Contacts Engaged</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Supplier Diversity Track</td><td>20</td><td>188,187</td><td>782</td><td class="val-up">6</td><td class="val-up">9 / 8 DOTs</td></tr>
+            <tr class="highlight"><td>Labor Compliance Track</td><td>27</td><td>199,301</td><td>438</td><td class="val-up">15</td><td class="val-up">13 / 10 DOTs</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="case-quote">
+        <p>Form fills matter, but when a government buyer navigates to a demo request page on their own, after seeing an ad but without clicking it, that tells you something. They sought that page out independently. For accounts operating on 12 to 18 month procurement cycles, surfacing that signal and explaining what it means is a core part of how I build reporting for this client.</p>
+      </div>
+      <div style="margin: 0 40px 36px;">
+        <h4 style="font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#1a7f7f;margin-bottom:16px;">Sample Client Deliverable: Cross-Platform DOT Engagement</h4>
+        <div style="border:1px solid #e2ddd6;border-radius:4px;overflow:auto;max-height:540px;background:#F8FAFC;">
+          <iframe srcdoc="
+&lt;style&gt;
+  .tab-bar{display:flex;gap:8px;margin-bottom:16px}
+  .tab{padding:6px 18px;border-radius:20px;font-size:13px;font-weight:500;cursor:pointer;border:2px solid transparent;transition:all .15s;background:var(--color-background-secondary);color:var(--color-text-secondary)}
+  .tab.b2g{background:#1E2761;color:#fff;border-color:#1E2761}
+  .tab.ec{background:#F59E0B;color:#1E2761;border-color:#F59E0B}
+  .toggle-group{display:flex;background:var(--color-background-secondary);border-radius:20px;padding:2px;gap:2px}
+  .tog{padding:4px 14px;border-radius:18px;font-size:12px;font-weight:500;cursor:pointer;border:none;background:transparent;color:var(--color-text-secondary);transition:all .12s}
+  .tog.on{background:var(--color-background-primary);color:var(--color-text-primary);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+  .stat-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:16px}
+  .stat{background:var(--color-background-secondary);border-radius:8px;padding:10px 12px}
+  .stat-val{font-size:20px;font-weight:500;color:var(--color-text-primary)}
+  .stat-lbl{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:12px;font-size:12px;color:var(--color-text-secondary);align-items:center}
+  .li{display:flex;align-items:center;gap:5px}
+  .sw{width:11px;height:11px;border-radius:2px;flex-shrink:0}
+&lt;/style&gt;
+
+&lt;div style=&quot;padding:12px 0 0&quot;&gt;
+  &lt;div class=&quot;tab-bar&quot;&gt;
+    &lt;button class=&quot;tab b2g&quot; onclick=&quot;sw(&#x27;b2g&#x27;,this)&quot;&gt;Supplier Diversity&lt;/button&gt;
+    &lt;button class=&quot;tab&quot; onclick=&quot;sw(&#x27;ec&#x27;,this)&quot;&gt;Labor Compliance&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;stat-row&quot; id=&quot;stats&quot;&gt;&lt;/div&gt;
+  &lt;div style=&quot;display:flex;align-items:center;gap:16px;margin-bottom:14px;font-size:12px;color:var(--color-text-secondary)&quot;&gt;
+    &lt;span&gt;Show:&lt;/span&gt;
+    &lt;div class=&quot;toggle-group&quot;&gt;
+      &lt;button class=&quot;tog on&quot; onclick=&quot;sm(&#x27;imp&#x27;,this)&quot;&gt;Impressions&lt;/button&gt;
+      &lt;button class=&quot;tog&quot; onclick=&quot;sm(&#x27;clk&#x27;,this)&quot;&gt;Clicks&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;legend&quot;&gt;
+    &lt;span class=&quot;li&quot;&gt;&lt;span class=&quot;sw&quot; style=&quot;background:#10B981&quot;&gt;&lt;/span&gt;Both platforms&lt;/span&gt;
+    &lt;span class=&quot;li&quot;&gt;&lt;span class=&quot;sw&quot; style=&quot;background:#0077B5&quot;&gt;&lt;/span&gt;LinkedIn only&lt;/span&gt;
+    &lt;span class=&quot;li&quot;&gt;&lt;span class=&quot;sw&quot; style=&quot;background:#6C3FF5&quot;&gt;&lt;/span&gt;StackAdapt only&lt;/span&gt;
+    &lt;span class=&quot;li&quot; style=&quot;gap:6px&quot;&gt;
+      &lt;svg width=&quot;13&quot; height=&quot;13&quot; viewBox=&quot;0 0 13 13&quot;&gt;&lt;polygon points=&quot;6.5,1 8.5,5 13,5.5 9.5,9 10.5,13 6.5,10.5 2.5,13 3.5,9 0,5.5 4.5,5&quot; fill=&quot;#F59E0B&quot;/&gt;&lt;/svg&gt;
+      Post-ad intent signal (count shown)
+    &lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;position:relative;width:100%&quot; id=&quot;wrap&quot;&gt;&lt;canvas id=&quot;chart&quot;&gt;&lt;/canvas&gt;&lt;/div&gt;
+  &lt;p style=&quot;font-size:11px;color:var(--color-text-secondary);margin-top:8px;line-height:1.6&quot;&gt;
+    Gold star = account visited /request-a-demo/ after seeing an ad, with no click required. Number next to the star is the signal count.
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+const C={b2g:{data:[
+  {n:&quot;Virginia DOT&quot;,        li_i:13543,sa_i:14938,li_c:75, sa_c:46, s:0},
+  {n:&quot;Michigan DOT&quot;,        li_i:4149, sa_i:20449,li_c:22, sa_c:181,s:3},
+  {n:&quot;NC DOT&quot;,              li_i:793,  sa_i:17541,li_c:5,  sa_c:51, s:1},
+  {n:&quot;Connecticut DOT&quot;,     li_i:6344, sa_i:11948,li_c:51, sa_c:35, s:0},
+  {n:&quot;Indiana DOT&quot;,         li_i:5062, sa_i:13085,li_c:38, sa_c:77, s:0},
+  {n:&quot;Florida DOT&quot;,         li_i:9691, sa_i:6342, li_c:65, sa_c:16, s:0},
+  {n:&quot;Illinois DOT&quot;,        li_i:4513, sa_i:9719, li_c:38, sa_c:11, s:1},
+  {n:&quot;South Carolina DOT&quot;,  li_i:2754, sa_i:10476,li_c:15, sa_c:18, s:1},
+  {n:&quot;Maine DOT&quot;,           li_i:1029, sa_i:8939, li_c:8,  sa_c:33, s:0},
+  {n:&quot;Georgia DOT&quot;,         li_i:4149, sa_i:0,    li_c:33, sa_c:0,  s:0},
+  {n:&quot;Nebraska DOT&quot;,        li_i:1564, sa_i:1894, li_c:8,  sa_c:1,  s:0},
+  {n:&quot;Kansas DOT&quot;,          li_i:2264, sa_i:838,  li_c:17, sa_c:2,  s:0},
+  {n:&quot;Arkansas DOT&quot;,        li_i:1543, sa_i:1541, li_c:10, sa_c:1,  s:0},
+  {n:&quot;Mississippi DOT&quot;,     li_i:773,  sa_i:959,  li_c:7,  sa_c:2,  s:0},
+  {n:&quot;Montana DOT&quot;,         li_i:1554, sa_i:0,    li_c:7,  sa_c:0,  s:0},
+  {n:&quot;Rhode Island DOT&quot;,    li_i:724,  sa_i:0,    li_c:7,  sa_c:0,  s:0},
+  {n:&quot;Alabama DOT&quot;,         li_i:539,  sa_i:0,    li_c:8,  sa_c:0,  s:0},
+  {n:&quot;Alaska DOT&quot;,          li_i:511,  sa_i:0,    li_c:0,  sa_c:0,  s:0},
+  {n:&quot;New Hampshire DOT&quot;,   li_i:509,  sa_i:0,    li_c:4,  sa_c:0,  s:0},
+  {n:&quot;West Virginia DOT&quot;,   li_i:473,  sa_i:0,    li_c:6,  sa_c:0,  s:0},
+]},ec:{data:[
+  {n:&quot;Indiana DOT&quot;,         li_i:0,    sa_i:21725,li_c:0,  sa_c:80, s:6},
+  {n:&quot;Michigan DOT&quot;,        li_i:1768, sa_i:16632,li_c:11, sa_c:66, s:1},
+  {n:&quot;Connecticut DOT&quot;,     li_i:4622, sa_i:13758,li_c:16, sa_c:19, s:1},
+  {n:&quot;Oregon DOT&quot;,          li_i:1614, sa_i:15412,li_c:13, sa_c:36, s:3},
+  {n:&quot;Pennsylvania DOT&quot;,    li_i:3053, sa_i:11618,li_c:22, sa_c:12, s:1},
+  {n:&quot;Virginia DOT&quot;,        li_i:0,    sa_i:13648,li_c:0,  sa_c:10, s:1},
+  {n:&quot;Maine DOT&quot;,           li_i:0,    sa_i:12733,li_c:0,  sa_c:14, s:2},
+  {n:&quot;NC DOT&quot;,              li_i:0,    sa_i:10661,li_c:0,  sa_c:6,  s:0},
+  {n:&quot;Illinois DOT&quot;,        li_i:1620, sa_i:7413, li_c:5,  sa_c:1,  s:0},
+  {n:&quot;Washington State DOT&quot;,li_i:4871, sa_i:4031, li_c:20, sa_c:10, s:0},
+  {n:&quot;Colorado DOT&quot;,        li_i:2023, sa_i:5199, li_c:8,  sa_c:2,  s:0},
+  {n:&quot;Florida DOT&quot;,         li_i:0,    sa_i:6965, li_c:0,  sa_c:10, s:0},
+  {n:&quot;Missouri DOT&quot;,        li_i:2062, sa_i:4357, li_c:4,  sa_c:6,  s:0},
+  {n:&quot;South Carolina DOT&quot;,  li_i:717,  sa_i:4266, li_c:3,  sa_c:1,  s:0},
+  {n:&quot;New Hampshire DOT&quot;,   li_i:0,    sa_i:5368, li_c:0,  sa_c:2,  s:0},
+  {n:&quot;Maryland DOT&quot;,        li_i:3701, sa_i:0,    li_c:27, sa_c:0,  s:0},
+  {n:&quot;Mississippi DOT&quot;,     li_i:0,    sa_i:3677, li_c:0,  sa_c:1,  s:0},
+  {n:&quot;NY DOT&quot;,              li_i:0,    sa_i:2955, li_c:0,  sa_c:3,  s:0},
+  {n:&quot;Delaware DOT&quot;,        li_i:0,    sa_i:2864, li_c:0,  sa_c:1,  s:0},
+  {n:&quot;New Jersey DOT&quot;,      li_i:2796, sa_i:0,    li_c:13, sa_c:0,  s:0},
+  {n:&quot;NYC DOT&quot;,             li_i:2552, sa_i:0,    li_c:7,  sa_c:0,  s:0},
+  {n:&quot;Georgia DOT&quot;,         li_i:1795, sa_i:7,    li_c:10, sa_c:0,  s:0},
+  {n:&quot;Arkansas DOT&quot;,        li_i:960,  sa_i:469,  li_c:3,  sa_c:1,  s:0},
+]}};
+
+let chart=null,camp=&#x27;b2g&#x27;,metric=&#x27;imp&#x27;;
+
+const starPlugin={
+  id:&#x27;stars&#x27;,
+  afterDatasetsDraw(chart){
+    const {ctx,scales:{x,y}}=chart;
+    const d=C[camp].data;
+    const isImp=metric===&#x27;imp&#x27;;
+    d.forEach((r,i)=&gt;{
+      if(!r.s)return;
+      const total=isImp?(r.li_i+r.sa_i):(r.li_c+r.sa_c);
+      const xPos=x.getPixelForValue(total);
+      const yPos=y.getPixelForValue(i);
+      const sz=7;
+      ctx.save();
+      ctx.translate(xPos+14,yPos);
+      ctx.beginPath();
+      for(let p=0;p&lt;5;p++){
+        const a=((p*4-1)*Math.PI)/5;
+        const b=((p*4+1)*Math.PI)/5;
+        ctx.lineTo(Math.cos(a)*sz,Math.sin(a)*sz);
+        ctx.lineTo(Math.cos(b)*(sz*0.42),Math.sin(b)*(sz*0.42));
+      }
+      ctx.closePath();
+      ctx.fillStyle=&#x27;#F59E0B&#x27;;
+      ctx.fill();
+      ctx.restore();
+      ctx.save();
+      ctx.fillStyle=&#x27;#92400E&#x27;;
+      ctx.font=&#x27;500 11px Arial&#x27;;
+      ctx.textBaseline=&#x27;middle&#x27;;
+      ctx.fillText(r.s,xPos+26,yPos);
+      ctx.restore();
+    });
+  }
+};
+
+function liColor(r){return r.li_i&gt;0&amp;&amp;r.sa_i&gt;0?&#x27;#0077B5&#x27;:(r.li_i&gt;0?&#x27;#0077B5&#x27;:&#x27;transparent&#x27;)}
+function saColor(r,isImp){
+  const both=isImp?(r.li_i&gt;0&amp;&amp;r.sa_i&gt;0):(r.li_c&gt;0&amp;&amp;r.sa_c&gt;0);
+  const saHas=isImp?r.sa_i&gt;0:r.sa_c&gt;0;
+  if(!saHas)return&#x27;transparent&#x27;;
+  return both?&#x27;#10B981&#x27;:&#x27;#6C3FF5&#x27;;
+}
+
+function updateStats(id){
+  const d=C[id].data,isImp=metric===&#x27;imp&#x27;;
+  const both=d.filter(r=&gt;isImp?(r.li_i&gt;0&amp;&amp;r.sa_i&gt;0):(r.li_c&gt;0&amp;&amp;r.sa_c&gt;0)).length;
+  const tl=isImp?d.reduce((a,r)=&gt;a+r.li_i,0):d.reduce((a,r)=&gt;a+r.li_c,0);
+  const ts=isImp?d.reduce((a,r)=&gt;a+r.sa_i,0):d.reduce((a,r)=&gt;a+r.sa_c,0);
+  const sec=d.reduce((a,r)=&gt;a+r.s,0);
+  document.getElementById(&#x27;stats&#x27;).innerHTML=`
+    &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat-val&quot;&gt;${both}&lt;/div&gt;&lt;div class=&quot;stat-lbl&quot;&gt;On both platforms&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat-val&quot;&gt;${tl.toLocaleString()}&lt;/div&gt;&lt;div class=&quot;stat-lbl&quot;&gt;LinkedIn ${isImp?&#x27;impressions&#x27;:&#x27;clicks&#x27;}&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat-val&quot;&gt;${ts.toLocaleString()}&lt;/div&gt;&lt;div class=&quot;stat-lbl&quot;&gt;StackAdapt ${isImp?&#x27;impressions&#x27;:&#x27;clicks&#x27;}&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat-val&quot;&gt;${sec}&lt;/div&gt;&lt;div class=&quot;stat-lbl&quot;&gt;Total intent signals&lt;/div&gt;&lt;/div&gt;`;
+}
+
+function buildChart(id,m){
+  const d=C[id].data,isImp=m===&#x27;imp&#x27;;
+  document.getElementById(&#x27;wrap&#x27;).style.height=Math.max(380,d.length*34+80)+&#x27;px&#x27;;
+  const ctx=document.getElementById(&#x27;chart&#x27;).getContext(&#x27;2d&#x27;);
+  if(chart)chart.destroy();
+  chart=new Chart(ctx,{
+    plugins:[starPlugin],
+    type:&#x27;bar&#x27;,
+    data:{
+      labels:d.map(r=&gt;r.n),
+      datasets:[
+        {label:&#x27;LinkedIn&#x27;,data:d.map(r=&gt;isImp?r.li_i:r.li_c),
+          backgroundColor:d.map(r=&gt;liColor(r)),
+          borderWidth:0,borderSkipped:false,
+          borderRadius:{topLeft:3,topRight:0,bottomLeft:3,bottomRight:0},stack:&#x27;v&#x27;},
+        {label:&#x27;StackAdapt&#x27;,data:d.map(r=&gt;isImp?r.sa_i:r.sa_c),
+          backgroundColor:d.map(r=&gt;saColor(r,isImp)),
+          borderWidth:0,borderSkipped:false,
+          borderRadius:{topLeft:0,topRight:3,bottomLeft:0,bottomRight:3},stack:&#x27;v&#x27;}
+      ]
+    },
+    options:{
+      indexAxis:&#x27;y&#x27;,responsive:true,maintainAspectRatio:false,
+      animation:{duration:250},
+      layout:{padding:{right:60}},
+      plugins:{
+        legend:{display:false},
+        tooltip:{
+          backgroundColor:&#x27;#1E293B&#x27;,padding:10,
+          callbacks:{
+            title:i=&gt;i[0].label,
+            afterBody:i=&gt;{
+              const r=d[i[0].dataIndex];
+              const li=isImp?r.li_i:r.li_c,sa=isImp?r.sa_i:r.sa_c;
+              const lines=[];
+              if(li&gt;0&amp;&amp;sa&gt;0)lines.push(&#x27;Platforms: Both&#x27;);
+              else if(li&gt;0)lines.push(&#x27;Platform: LinkedIn only&#x27;);
+              else lines.push(&#x27;Platform: StackAdapt only&#x27;);
+              lines.push(&#x27;LinkedIn: &#x27;+li.toLocaleString());
+              lines.push(&#x27;StackAdapt: &#x27;+sa.toLocaleString());
+              lines.push(&#x27;Total: &#x27;+(li+sa).toLocaleString());
+              if(r.s)lines.push(&#x27;Intent signals: &#x27;+r.s);
+              return lines;
+            }
+          }
+        }
+      },
+      scales:{
+        x:{stacked:true,grid:{color:&#x27;rgba(100,116,139,.1)&#x27;},
+          ticks:{color:&#x27;#64748b&#x27;,font:{size:10},callback:v=&gt;isImp?(v&gt;=1000?(v/1000).toFixed(0)+&#x27;k&#x27;:v):v}},
+        y:{stacked:true,grid:{display:false},ticks:{color:&#x27;#1e293b&#x27;,font:{size:11}}}
+      }
+    }
+  });
+}
+
+function sw(id,btn){
+  camp=id;
+  document.querySelectorAll(&#x27;.tab&#x27;).forEach(t=&gt;{t.className=&#x27;tab&#x27;});
+  btn.className=&#x27;tab &#x27;+(id===&#x27;b2g&#x27;?&#x27;b2g&#x27;:&#x27;ec&#x27;);
+  updateStats(id);buildChart(id,metric);
+}
+function sm(m,btn){
+  metric=m;
+  document.querySelectorAll(&#x27;.tog&#x27;).forEach(t=&gt;t.classList.remove(&#x27;on&#x27;));
+  btn.classList.add(&#x27;on&#x27;);
+  updateStats(camp);buildChart(camp,m);
+}
+
+updateStats(&#x27;b2g&#x27;);
+buildChart(&#x27;b2g&#x27;,&#x27;imp&#x27;);
+&lt;/script&gt;
+" style="width:100%;height:600px;border:none;"></iframe>
+        </div>
+      </div>
+      <div style="margin: 0 40px 36px;">
+        <h4 style="font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#1a7f7f;margin-bottom:16px;">Sample Client Deliverable: DOT Engagement Table</h4>
+        <div style="border:1px solid #e2ddd6;border-radius:4px;overflow:auto;max-height:540px;background:#F8FAFC;">
+          <iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;DOT Account Engagement&lt;/title&gt;
+&lt;style&gt;
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Arial,sans-serif;background:#F8FAFC;color:#1E293B;padding:32px}
+  .report-header{margin-bottom:24px}
+  .report-header h1{font-size:20px;font-weight:700;color:#1E2761;margin-bottom:4px}
+  .report-header p{font-size:13px;color:#64748B}
+  .tab-bar{display:flex;gap:8px;margin-bottom:20px}
+  .tab{padding:7px 20px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;border:2px solid transparent;background:#E2E8F0;color:#64748B;transition:all .15s}
+  .tab.b2g{background:#1E2761;color:#fff;border-color:#1E2761}
+  .tab.ec{background:#F59E0B;color:#1E2761;border-color:#F59E0B}
+  .stat-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:20px}
+  .stat{background:#fff;border:1px solid #E2E8F0;border-radius:8px;padding:12px 14px}
+  .stat-val{font-size:22px;font-weight:700;color:#1E2761}
+  .stat-lbl{font-size:11px;color:#64748B;margin-top:3px}
+  .table-wrap{background:#fff;border:1px solid #E2E8F0;border-radius:10px;overflow:hidden}
+  table{width:100%;border-collapse:collapse;font-size:12px}
+  thead tr{background:#F8FAFC}
+  th{padding:10px 12px;text-align:left;font-weight:600;font-size:11px;color:#64748B;border-bottom:1.5px solid #E2E8F0;white-space:nowrap;cursor:pointer;user-select:none}
+  th:hover{color:#1E2761}
+  th.r,td.r{text-align:right}
+  th.c,td.c{text-align:center}
+  td{padding:9px 12px;border-bottom:0.5px solid #F1F5F9;color:#1E293B;font-size:12px}
+  tr:last-child td{border-bottom:none}
+  tr:hover td{background:#F8FAFC}
+  tr.has-intent td{background:#FFFBEB}
+  tr.has-intent:hover td{background:#FEF3C7}
+  tr.has-email td{background:#F0FDF4}
+  tr.has-email:hover td{background:#DCFCE7}
+  tr.has-both td{background:linear-gradient(135deg,#FFFBEB 50%,#F0FDF4 50%)}
+  tr.has-both:hover td{background:#FEF9C3}
+  .badge{display:inline-block;padding:3px 8px;border-radius:12px;font-size:11px;font-weight:600;white-space:nowrap}
+  .badge-both{background:#D1FAE5;color:#065F46}
+  .badge-li{background:#DBEAFE;color:#1E40AF}
+  .badge-sa{background:#EDE9FE;color:#4C1D95}
+  .ctr-bar{display:flex;align-items:center;gap:6px}
+  .ctr-track{flex:1;height:5px;background:#E2E8F0;border-radius:3px;min-width:50px}
+  .ctr-fill{height:5px;border-radius:3px;background:#0D9488}
+  .star-cell{display:flex;align-items:center;justify-content:center;gap:4px}
+  .email-cell{display:flex;align-items:center;justify-content:center;gap:5px}
+  .email-badge{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:20px;padding:0 6px;border-radius:10px;font-size:11px;font-weight:700;background:#DCFCE7;color:#14532D}
+  tfoot tr td{font-weight:600;background:#F8FAFC;border-top:1.5px solid #E2E8F0;color:#1E2761}
+  .sort-ind{font-size:9px;opacity:0.4;margin-left:2px}
+  .sort-ind.on{opacity:1;color:#0D9488}
+  .footnote{font-size:11px;color:#94A3B8;margin-top:14px;line-height:1.7}
+  .footnote strong{color:#64748B}
+  .legend{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:16px;font-size:12px;color:#64748B;align-items:center}
+  .li{display:flex;align-items:center;gap:5px}
+  .sw{width:12px;height:12px;border-radius:2px;flex-shrink:0}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;report-header&quot;&gt;
+  &lt;h1&gt;DOT Account Engagement&lt;/h1&gt;
+  &lt;p&gt;LinkedIn &amp;amp; StackAdapt &amp;amp; HubSpot Email &amp;nbsp;&amp;middot;&amp;nbsp; Department of Transportation Targeting &amp;nbsp;&amp;middot;&amp;nbsp; Feb 1 &amp;ndash; Mar 23, 2026 &amp;nbsp;&amp;middot;&amp;nbsp; Prepared by Brickwork (brick.work)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;tab-bar&quot;&gt;
+  &lt;button class=&quot;tab b2g&quot; onclick=&quot;sw(&#x27;b2g&#x27;,this)&quot;&gt;Supplier Diversity&lt;/button&gt;
+  &lt;button class=&quot;tab&quot; onclick=&quot;sw(&#x27;ec&#x27;,this)&quot;&gt;Labor Compliance&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class=&quot;stat-row&quot; id=&quot;stats&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;legend&quot;&gt;
+  &lt;span class=&quot;li&quot;&gt;&lt;span class=&quot;sw&quot; style=&quot;background:#10B981&quot;&gt;&lt;/span&gt;Both platforms&lt;/span&gt;
+  &lt;span class=&quot;li&quot;&gt;&lt;span class=&quot;sw&quot; style=&quot;background:#0077B5&quot;&gt;&lt;/span&gt;LinkedIn only&lt;/span&gt;
+  &lt;span class=&quot;li&quot;&gt;&lt;span class=&quot;sw&quot; style=&quot;background:#6C3FF5&quot;&gt;&lt;/span&gt;StackAdapt only&lt;/span&gt;
+  &lt;span class=&quot;li&quot; style=&quot;gap:6px&quot;&gt;&lt;svg width=&quot;13&quot; height=&quot;13&quot; viewBox=&quot;0 0 13 13&quot;&gt;&lt;polygon points=&quot;6.5,1 8.5,5 13,5.5 9.5,9 10.5,13 6.5,10.5 2.5,13 3.5,9 0,5.5 4.5,5&quot; fill=&quot;#F59E0B&quot;/&gt;&lt;/svg&gt;Post-ad intent signal&lt;/span&gt;
+  &lt;span class=&quot;li&quot;&gt;&lt;span class=&quot;sw&quot; style=&quot;background:#DCFCE7;border:1px solid #86EFAC&quot;&gt;&lt;/span&gt;Email contacts engaged&lt;/span&gt;
+  &lt;span class=&quot;li&quot;&gt;&lt;span class=&quot;sw&quot; style=&quot;background:linear-gradient(135deg,#FFFBEB 50%,#F0FDF4 50%);border:1px solid #D1D5DB&quot;&gt;&lt;/span&gt;Both intent + email&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;table-wrap&quot;&gt;
+  &lt;table&gt;
+    &lt;thead&gt;&lt;tr&gt;
+      &lt;th onclick=&quot;sortBy(&#x27;n&#x27;)&quot;&gt;Account &lt;span class=&quot;sort-ind on&quot; id=&quot;s-n&quot;&gt;↑&lt;/span&gt;&lt;/th&gt;
+      &lt;th class=&quot;r&quot; onclick=&quot;sortBy(&#x27;imp&#x27;)&quot;&gt;Impressions &lt;span class=&quot;sort-ind&quot; id=&quot;s-imp&quot;&gt;↕&lt;/span&gt;&lt;/th&gt;
+      &lt;th class=&quot;r&quot; onclick=&quot;sortBy(&#x27;clk&#x27;)&quot;&gt;Clicks &lt;span class=&quot;sort-ind&quot; id=&quot;s-clk&quot;&gt;↕&lt;/span&gt;&lt;/th&gt;
+      &lt;th class=&quot;r&quot; onclick=&quot;sortBy(&#x27;ctr&#x27;)&quot;&gt;CTR &lt;span class=&quot;sort-ind&quot; id=&quot;s-ctr&quot;&gt;↕&lt;/span&gt;&lt;/th&gt;
+      &lt;th class=&quot;c&quot;&gt;Platforms&lt;/th&gt;
+      &lt;th class=&quot;c&quot; onclick=&quot;sortBy(&#x27;s&#x27;)&quot;&gt;Intent &lt;span class=&quot;sort-ind&quot; id=&quot;s-s&quot;&gt;↕&lt;/span&gt;&lt;/th&gt;
+      &lt;th class=&quot;c&quot; onclick=&quot;sortBy(&#x27;e&#x27;)&quot;&gt;Email &lt;span class=&quot;sort-ind&quot; id=&quot;s-e&quot;&gt;↕&lt;/span&gt;&lt;/th&gt;
+    &lt;/tr&gt;&lt;/thead&gt;
+    &lt;tbody id=&quot;tbody&quot;&gt;&lt;/tbody&gt;
+    &lt;tfoot id=&quot;tfoot&quot;&gt;&lt;/tfoot&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+&lt;p class=&quot;footnote&quot;&gt;
+  &lt;strong&gt;Impressions &amp;amp; Clicks&lt;/strong&gt; = combined LinkedIn + StackAdapt totals.&lt;br&gt;
+  &lt;strong&gt;CTR&lt;/strong&gt; = total clicks &amp;divide; total impressions across both platforms.&lt;br&gt;
+  &lt;strong&gt;Intent&lt;/strong&gt; (gold star) = account visited /request-a-demo/ independently after seeing an ad, without clicking. Number = times recorded. Source: StackAdapt secondary conversions.&lt;br&gt;
+  &lt;strong&gt;Email&lt;/strong&gt; (green badge) = number of named contacts from that DOT who opened or clicked a HubSpot email nurture sequence. Source: HubSpot email nurture series 2025&amp;ndash;2026.&lt;br&gt;
+  Gold row = paid ad intent signal present. Green row = email engagement only. Gradient row = both signals present.&lt;br&gt;
+  Note: Wyoming DOT (Labor Compliance) includes 1 contact flagged as existing customer (Jeff White). Supplier Diversity Email 2 2026: one contact recorded 30+ opens, likely email preview/bot activity, excluded from count.&lt;br&gt;&lt;br&gt;
+  &lt;strong&gt;Data:&lt;/strong&gt; LinkedIn Campaign Manager &amp;bull; StackAdapt ABM domain report &amp;bull; HubSpot email export &amp;bull; Prepared by Brickwork (brick.work)
+&lt;/p&gt;
+&lt;script&gt;
+const C={
+  b2g:[
+    {n:&quot;Virginia DOT&quot;,       li_i:13543,sa_i:14938,li_c:75,sa_c:46,s:0,e:0},
+    {n:&quot;Michigan DOT&quot;,       li_i:4149,sa_i:20449,li_c:22,sa_c:181,s:3,e:3},
+    {n:&quot;NC DOT&quot;,             li_i:793,sa_i:17541,li_c:5,sa_c:51,s:1,e:1},
+    {n:&quot;Connecticut DOT&quot;,    li_i:6344,sa_i:11948,li_c:51,sa_c:35,s:0,e:0},
+    {n:&quot;Indiana DOT&quot;,        li_i:5062,sa_i:13085,li_c:38,sa_c:77,s:0,e:0},
+    {n:&quot;Florida DOT&quot;,        li_i:9691,sa_i:6342,li_c:65,sa_c:16,s:0,e:1},
+    {n:&quot;Illinois DOT&quot;,       li_i:4513,sa_i:9719,li_c:38,sa_c:11,s:1,e:1},
+    {n:&quot;South Carolina DOT&quot;, li_i:2754,sa_i:10476,li_c:15,sa_c:18,s:1,e:0},
+    {n:&quot;Maine DOT&quot;,          li_i:1029,sa_i:8939,li_c:8,sa_c:33,s:0,e:0},
+    {n:&quot;Georgia DOT&quot;,        li_i:4149,sa_i:0,li_c:33,sa_c:0,s:0,e:0},
+    {n:&quot;Nebraska DOT&quot;,       li_i:1564,sa_i:1894,li_c:8,sa_c:1,s:0,e:0},
+    {n:&quot;Kansas DOT&quot;,         li_i:2264,sa_i:838,li_c:17,sa_c:2,s:0,e:0},
+    {n:&quot;Arkansas DOT&quot;,       li_i:1543,sa_i:1541,li_c:10,sa_c:1,s:0,e:1},
+    {n:&quot;Mississippi DOT&quot;,    li_i:773,sa_i:959,li_c:7,sa_c:2,s:0,e:1},
+    {n:&quot;Montana DOT&quot;,        li_i:1554,sa_i:0,li_c:7,sa_c:0,s:0,e:1},
+    {n:&quot;Rhode Island DOT&quot;,   li_i:724,sa_i:0,li_c:7,sa_c:0,s:0,e:0},
+    {n:&quot;Alabama DOT&quot;,        li_i:539,sa_i:0,li_c:8,sa_c:0,s:0,e:0},
+    {n:&quot;Alaska DOT&quot;,         li_i:511,sa_i:0,li_c:0,sa_c:0,s:0,e:0},
+    {n:&quot;New Hampshire DOT&quot;,  li_i:509,sa_i:0,li_c:4,sa_c:0,s:0,e:0},
+    {n:&quot;West Virginia DOT&quot;,  li_i:473,sa_i:0,li_c:6,sa_c:0,s:0,e:1},
+  ],
+  ec:[
+    {n:&quot;Indiana DOT&quot;,        li_i:0,sa_i:21725,li_c:0,sa_c:80,s:6,e:0},
+    {n:&quot;Michigan DOT&quot;,       li_i:1768,sa_i:16632,li_c:11,sa_c:66,s:1,e:0},
+    {n:&quot;Connecticut DOT&quot;,    li_i:4622,sa_i:13758,li_c:16,sa_c:19,s:1,e:0},
+    {n:&quot;Oregon DOT&quot;,         li_i:1614,sa_i:15412,li_c:13,sa_c:36,s:3,e:0},
+    {n:&quot;Pennsylvania DOT&quot;,   li_i:3053,sa_i:11618,li_c:22,sa_c:12,s:1,e:2},
+    {n:&quot;Virginia DOT&quot;,       li_i:0,sa_i:13648,li_c:0,sa_c:10,s:1,e:0},
+    {n:&quot;Maine DOT&quot;,          li_i:0,sa_i:12733,li_c:0,sa_c:14,s:2,e:0},
+    {n:&quot;NC DOT&quot;,             li_i:0,sa_i:10661,li_c:0,sa_c:6,s:0,e:0},
+    {n:&quot;Illinois DOT&quot;,       li_i:1620,sa_i:7413,li_c:5,sa_c:1,s:0,e:0},
+    {n:&quot;Washington State DOT&quot;,li_i:4871,sa_i:4031,li_c:20,sa_c:10,s:0,e:0},
+    {n:&quot;Colorado DOT&quot;,       li_i:2023,sa_i:5199,li_c:8,sa_c:2,s:0,e:3},
+    {n:&quot;Florida DOT&quot;,        li_i:0,sa_i:6965,li_c:0,sa_c:10,s:0,e:0},
+    {n:&quot;Missouri DOT&quot;,       li_i:2062,sa_i:4357,li_c:4,sa_c:6,s:0,e:2},
+    {n:&quot;South Carolina DOT&quot;, li_i:717,sa_i:4266,li_c:3,sa_c:1,s:0,e:0},
+    {n:&quot;New Hampshire DOT&quot;,  li_i:0,sa_i:5368,li_c:0,sa_c:2,s:0,e:0},
+    {n:&quot;Maryland DOT&quot;,       li_i:3701,sa_i:0,li_c:27,sa_c:0,s:0,e:1},
+    {n:&quot;Mississippi DOT&quot;,    li_i:0,sa_i:3677,li_c:0,sa_c:1,s:0,e:0},
+    {n:&quot;NY DOT&quot;,             li_i:0,sa_i:2955,li_c:0,sa_c:3,s:0,e:1},
+    {n:&quot;Delaware DOT&quot;,       li_i:0,sa_i:2864,li_c:0,sa_c:1,s:0,e:0},
+    {n:&quot;New Jersey DOT&quot;,     li_i:2796,sa_i:0,li_c:13,sa_c:0,s:0,e:0},
+    {n:&quot;NYC DOT&quot;,            li_i:2552,sa_i:0,li_c:7,sa_c:0,s:0,e:0},
+    {n:&quot;Georgia DOT&quot;,        li_i:1795,sa_i:7,li_c:10,sa_c:0,s:0,e:0},
+    {n:&quot;Arkansas DOT&quot;,       li_i:960,sa_i:469,li_c:3,sa_c:1,s:0,e:0},
+    {n:&quot;Louisiana DOT&quot;,      li_i:0,sa_i:0,li_c:0,sa_c:0,s:0,e:1},
+    {n:&quot;Wyoming DOT&quot;,        li_i:0,sa_i:0,li_c:0,sa_c:0,s:0,e:2},
+    {n:&quot;DC DOT&quot;,             li_i:408,sa_i:0,li_c:0,sa_c:0,s:0,e:1},
+    {n:&quot;North Dakota DOT&quot;,   li_i:0,sa_i:0,li_c:0,sa_c:0,s:0,e:2},
+  ]
+};
+
+let camp=&#x27;b2g&#x27;,sortKey=&#x27;n&#x27;,sortDir=1;
+
+function pfBadge(r){
+  const both=r.li_i&gt;0&amp;&amp;r.sa_i&gt;0,liOnly=r.li_i&gt;0&amp;&amp;r.sa_i===0,saOnly=r.sa_i&gt;0&amp;&amp;r.li_i===0;
+  if(both)return&#x27;&lt;span class=&quot;badge badge-both&quot;&gt;LinkedIn + StackAdapt&lt;/span&gt;&#x27;;
+  if(liOnly)return&#x27;&lt;span class=&quot;badge badge-li&quot;&gt;LinkedIn&lt;/span&gt;&#x27;;
+  if(saOnly)return&#x27;&lt;span class=&quot;badge badge-sa&quot;&gt;StackAdapt&lt;/span&gt;&#x27;;
+  return&#x27;&lt;span style=&quot;color:#94A3B8;font-size:11px&quot;&gt;Email only&lt;/span&gt;&#x27;;
+}
+
+function rowCls(r){
+  if(r.s&gt;0&amp;&amp;r.e&gt;0)return&#x27;has-both&#x27;;
+  if(r.s&gt;0)return&#x27;has-intent&#x27;;
+  if(r.e&gt;0)return&#x27;has-email&#x27;;
+  return&#x27;&#x27;;
+}
+
+function render(){
+  const data=[...C[camp]].map(r=&gt;({...r,
+    imp:r.li_i+r.sa_i,clk:r.li_c+r.sa_c,
+    ctr:(r.li_i+r.sa_i)?((r.li_c+r.sa_c)/(r.li_i+r.sa_i))*100:0
+  }));
+  data.sort((a,b)=&gt;{
+    const ak=sortKey===&#x27;n&#x27;?a.n:a[sortKey];
+    const bk=sortKey===&#x27;n&#x27;?b.n:b[sortKey];
+    return sortDir*(typeof ak===&#x27;string&#x27;?ak.localeCompare(bk):ak-bk);
+  });
+
+  const mx=Math.max(...data.map(r=&gt;r.ctr),0.01);
+  const tI=data.reduce((a,r)=&gt;a+r.imp,0);
+  const tC=data.reduce((a,r)=&gt;a+r.clk,0);
+  const tCTR=tI?(tC/tI*100):0;
+  const tS=data.reduce((a,r)=&gt;a+r.s,0);
+  const tE=data.reduce((a,r)=&gt;a+r.e,0);
+  const eDOTs=data.filter(r=&gt;r.e&gt;0).length;
+
+  document.getElementById(&#x27;stats&#x27;).innerHTML=`
+    &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat-val&quot;&gt;${data.length}&lt;/div&gt;&lt;div class=&quot;stat-lbl&quot;&gt;DOT accounts&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat-val&quot;&gt;${tI.toLocaleString()}&lt;/div&gt;&lt;div class=&quot;stat-lbl&quot;&gt;Total impressions&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat-val&quot;&gt;${tC.toLocaleString()}&lt;/div&gt;&lt;div class=&quot;stat-lbl&quot;&gt;Total clicks&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat-val&quot;&gt;${tS}&lt;/div&gt;&lt;div class=&quot;stat-lbl&quot;&gt;Intent signals&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat-val&quot;&gt;${tE} &lt;span style=&quot;font-size:13px;font-weight:400;color:#64748B&quot;&gt;/ ${eDOTs} DOTs&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;stat-lbl&quot;&gt;Email contacts&lt;/div&gt;&lt;/div&gt;`;
+
+  document.getElementById(&#x27;tbody&#x27;).innerHTML=data.map(r=&gt;`
+    &lt;tr class=&quot;${rowCls(r)}&quot;&gt;
+      &lt;td style=&quot;font-weight:${(r.s&gt;0||r.e&gt;0)?600:400}&quot;&gt;${r.n}&lt;/td&gt;
+      &lt;td class=&quot;r&quot;&gt;${r.imp&gt;0?r.imp.toLocaleString():&#x27;&lt;span style=&quot;color:#CBD5E1&quot;&gt;—&lt;/span&gt;&#x27;}&lt;/td&gt;
+      &lt;td class=&quot;r&quot;&gt;${r.clk&gt;0?r.clk.toLocaleString():&#x27;&lt;span style=&quot;color:#CBD5E1&quot;&gt;—&lt;/span&gt;&#x27;}&lt;/td&gt;
+      &lt;td class=&quot;r&quot;&gt;${r.imp&gt;0?`&lt;div class=&quot;ctr-bar&quot;&gt;&lt;div class=&quot;ctr-track&quot;&gt;&lt;div class=&quot;ctr-fill&quot; style=&quot;width:${Math.round(r.ctr/mx*100)}%&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;span style=&quot;min-width:38px;text-align:right&quot;&gt;${r.ctr.toFixed(2)}%&lt;/span&gt;&lt;/div&gt;`:&#x27;&lt;span style=&quot;color:#CBD5E1&quot;&gt;—&lt;/span&gt;&#x27;}&lt;/td&gt;
+      &lt;td class=&quot;c&quot;&gt;${pfBadge(r)}&lt;/td&gt;
+      &lt;td class=&quot;c&quot;&gt;${r.s&gt;0?`&lt;div class=&quot;star-cell&quot;&gt;&lt;svg width=&quot;13&quot; height=&quot;13&quot; viewBox=&quot;0 0 13 13&quot;&gt;&lt;polygon points=&quot;6.5,1 8.5,5 13,5.5 9.5,9 10.5,13 6.5,10.5 2.5,13 3.5,9 0,5.5 4.5,5&quot; fill=&quot;#F59E0B&quot;/&gt;&lt;/svg&gt;&lt;span style=&quot;font-size:12px;font-weight:700;color:#92400E&quot;&gt;${r.s}&lt;/span&gt;&lt;/div&gt;`:&#x27;&lt;span style=&quot;color:#CBD5E1&quot;&gt;—&lt;/span&gt;&#x27;}&lt;/td&gt;
+      &lt;td class=&quot;c&quot;&gt;${r.e&gt;0?`&lt;div class=&quot;email-cell&quot;&gt;&lt;svg width=&quot;14&quot; height=&quot;11&quot; viewBox=&quot;0 0 14 11&quot;&gt;&lt;rect x=&quot;0.5&quot; y=&quot;0.5&quot; width=&quot;13&quot; height=&quot;10&quot; rx=&quot;1.5&quot; fill=&quot;#DCFCE7&quot; stroke=&quot;#16A34A&quot;/&gt;&lt;path d=&quot;M0.5 2.5L7 6.5L13.5 2.5&quot; stroke=&quot;#16A34A&quot; stroke-width=&quot;1.2&quot; fill=&quot;none&quot;/&gt;&lt;/svg&gt;&lt;span class=&quot;email-badge&quot;&gt;${r.e}&lt;/span&gt;&lt;/div&gt;`:&#x27;&lt;span style=&quot;color:#CBD5E1&quot;&gt;—&lt;/span&gt;&#x27;}&lt;/td&gt;
+    &lt;/tr&gt;`).join(&#x27;&#x27;);
+
+  document.getElementById(&#x27;tfoot&#x27;).innerHTML=`&lt;tr&gt;
+    &lt;td&gt;Totals &amp;mdash; ${data.length} accounts&lt;/td&gt;
+    &lt;td class=&quot;r&quot;&gt;${tI.toLocaleString()}&lt;/td&gt;
+    &lt;td class=&quot;r&quot;&gt;${tC.toLocaleString()}&lt;/td&gt;
+    &lt;td class=&quot;r&quot;&gt;&lt;div class=&quot;ctr-bar&quot;&gt;&lt;div class=&quot;ctr-track&quot;&gt;&lt;div class=&quot;ctr-fill&quot; style=&quot;width:100%&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;span style=&quot;min-width:38px;text-align:right&quot;&gt;${tCTR.toFixed(2)}%&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td class=&quot;c&quot; style=&quot;color:#92400E&quot;&gt;${tS}&lt;/td&gt;
+    &lt;td class=&quot;c&quot;&gt;&lt;span class=&quot;email-badge&quot;&gt;${tE}&lt;/span&gt;&lt;/td&gt;
+  &lt;/tr&gt;`;
+
+  [&#x27;n&#x27;,&#x27;imp&#x27;,&#x27;clk&#x27;,&#x27;ctr&#x27;,&#x27;s&#x27;,&#x27;e&#x27;].forEach(k=&gt;{
+    const el=document.getElementById(&#x27;s-&#x27;+k);
+    if(el){el.textContent=k===sortKey?(sortDir===1?&#x27;↑&#x27;:&#x27;↓&#x27;):&#x27;↕&#x27;;el.className=&#x27;sort-ind&#x27;+(k===sortKey?&#x27; on&#x27;:&#x27;&#x27;);}
+  });
+}
+
+function sortBy(k){if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=-1;}render();}
+function sw(id,btn){
+  camp=id;sortKey=&#x27;n&#x27;;sortDir=1;
+  document.querySelectorAll(&#x27;.tab&#x27;).forEach(t=&gt;t.className=&#x27;tab&#x27;);
+  btn.className=&#x27;tab &#x27;+(id===&#x27;b2g&#x27;?&#x27;b2g&#x27;:&#x27;ec&#x27;);
+  render();
+}
+render();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" style="width:100%;height:980px;border:none;"></iframe>
+        </div>
+      </div>
+      <div style="margin: 0 40px 36px;">
+        <h4 style="font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#1a7f7f;margin-bottom:16px;">Sample Client Deliverable: Video Engagement Report</h4>
+        <div style="border:1px solid #e2ddd6;border-radius:4px;overflow:auto;max-height:540px;background:#F8FAFC;">
+          <iframe srcdoc="
+&lt;style&gt;
+  .tab-bar{display:flex;gap:8px;margin-bottom:16px}
+  .tab{padding:6px 18px;border-radius:20px;font-size:13px;font-weight:500;cursor:pointer;border:2px solid transparent;transition:all .15s;background:var(--color-background-secondary);color:var(--color-text-secondary)}
+  .tab.b2g{background:#1E2761;color:#fff;border-color:#1E2761}
+  .tab.ec{background:#F59E0B;color:#1E2761;border-color:#F59E0B}
+  .stat-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:16px}
+  .stat{background:var(--color-background-secondary);border-radius:8px;padding:10px 12px}
+  .stat-val{font-size:20px;font-weight:500;color:var(--color-text-primary)}
+  .stat-lbl{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+  .toggle-group{display:flex;background:var(--color-background-secondary);border-radius:20px;padding:2px;gap:2px;margin-bottom:14px}
+  .tog{padding:4px 14px;border-radius:18px;font-size:12px;font-weight:500;cursor:pointer;border:none;background:transparent;color:var(--color-text-secondary);transition:all .12s}
+  .tog.on{background:var(--color-background-primary);color:var(--color-text-primary);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+  table{width:100%;border-collapse:collapse;font-size:12px}
+  thead tr{background:var(--color-background-secondary)}
+  th{padding:9px 10px;text-align:left;font-weight:500;font-size:11px;color:var(--color-text-secondary);border-bottom:1.5px solid var(--color-border-tertiary);white-space:nowrap;cursor:pointer;user-select:none}
+  th:hover{color:var(--color-text-primary)}
+  th.r,td.r{text-align:right}
+  td{padding:8px 10px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-primary);font-size:12px}
+  tr:last-child td{border-bottom:none}
+  tr.completed td{background:rgba(13,148,136,0.06)}
+  tr.top-completer td{background:rgba(13,148,136,0.13)}
+  .bar-wrap{display:flex;align-items:center;gap:6px}
+  .bar-track{flex:1;height:5px;border-radius:3px;background:var(--color-border-tertiary);min-width:40px}
+  .bar-fill-view{height:5px;border-radius:3px;background:#0077B5}
+  .bar-fill-comp{height:5px;border-radius:3px;background:#0D9488}
+  .badge-comp{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:20px;padding:0 6px;border-radius:10px;font-size:11px;font-weight:500;background:rgba(16,185,129,0.15);color:#065f46}
+  .badge-zero{font-size:11px;color:var(--color-text-secondary)}
+  tfoot tr td{font-weight:500;background:var(--color-background-secondary);border-top:1.5px solid var(--color-border-tertiary)}
+  .sort-ind{font-size:9px;opacity:0.4;margin-left:2px}
+  .sort-ind.on{opacity:1}
+  .legend{display:flex;gap:16px;margin-bottom:12px;font-size:12px;color:var(--color-text-secondary);flex-wrap:wrap;align-items:center}
+  .li{display:flex;align-items:center;gap:5px}
+  .sw{width:10px;height:5px;border-radius:3px;flex-shrink:0}
+&lt;/style&gt;
+
+&lt;div style=&quot;padding:12px 0 0&quot;&gt;
+  &lt;div class=&quot;tab-bar&quot;&gt;
+    &lt;button class=&quot;tab b2g&quot; onclick=&quot;swCamp(&#x27;b2g&#x27;,this)&quot;&gt;Supplier Diversity video&lt;/button&gt;
+    &lt;button class=&quot;tab&quot; onclick=&quot;swCamp(&#x27;ec&#x27;,this)&quot;&gt;Labor Compliance video&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;stat-row&quot; id=&quot;stats&quot;&gt;&lt;/div&gt;
+  &lt;div style=&quot;display:flex;align-items:center;gap:12px;margin-bottom:12px;font-size:12px;color:var(--color-text-secondary)&quot;&gt;
+    &lt;span&gt;Sort by:&lt;/span&gt;
+    &lt;div class=&quot;toggle-group&quot;&gt;
+      &lt;button class=&quot;tog on&quot; onclick=&quot;swSort(&#x27;imp&#x27;,this)&quot;&gt;Impressions&lt;/button&gt;
+      &lt;button class=&quot;tog&quot; onclick=&quot;swSort(&#x27;views&#x27;,this)&quot;&gt;Views&lt;/button&gt;
+      &lt;button class=&quot;tog&quot; onclick=&quot;swSort(&#x27;completions&#x27;,this)&quot;&gt;Completions&lt;/button&gt;
+      &lt;button class=&quot;tog&quot; onclick=&quot;swSort(&#x27;view_rate&#x27;,this)&quot;&gt;View rate&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;legend&quot;&gt;
+    &lt;span class=&quot;li&quot;&gt;&lt;span class=&quot;sw&quot; style=&quot;background:#0077B5&quot;&gt;&lt;/span&gt;View rate bar&lt;/span&gt;
+    &lt;span class=&quot;li&quot;&gt;&lt;span class=&quot;sw&quot; style=&quot;background:#0D9488&quot;&gt;&lt;/span&gt;Completion rate bar&lt;/span&gt;
+    &lt;span class=&quot;li&quot; style=&quot;gap:6px&quot;&gt;&lt;span style=&quot;display:inline-block;width:10px;height:10px;border-radius:3px;background:rgba(13,148,136,0.13)&quot;&gt;&lt;/span&gt;Completed the video&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;overflow-x:auto&quot;&gt;
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th onclick=&quot;swSort(&#x27;name&#x27;)&quot;&gt;Account &lt;span class=&quot;sort-ind&quot; id=&quot;s-name&quot;&gt;↕&lt;/span&gt;&lt;/th&gt;
+          &lt;th class=&quot;r&quot; onclick=&quot;swSort(&#x27;imp&#x27;)&quot;&gt;Impressions &lt;span class=&quot;sort-ind on&quot; id=&quot;s-imp&quot;&gt;↓&lt;/span&gt;&lt;/th&gt;
+          &lt;th class=&quot;r&quot; onclick=&quot;swSort(&#x27;views&#x27;)&quot;&gt;Views &lt;span class=&quot;sort-ind&quot; id=&quot;s-views&quot;&gt;↕&lt;/span&gt;&lt;/th&gt;
+          &lt;th class=&quot;r&quot; onclick=&quot;swSort(&#x27;view_rate&#x27;)&quot;&gt;View rate &lt;span class=&quot;sort-ind&quot; id=&quot;s-view_rate&quot;&gt;↕&lt;/span&gt;&lt;/th&gt;
+          &lt;th class=&quot;r&quot; onclick=&quot;swSort(&#x27;completions&#x27;)&quot;&gt;Completions &lt;span class=&quot;sort-ind&quot; id=&quot;s-completions&quot;&gt;↕&lt;/span&gt;&lt;/th&gt;
+          &lt;th class=&quot;r&quot; onclick=&quot;swSort(&#x27;completion_rate&#x27;)&quot;&gt;Completion rate &lt;span class=&quot;sort-ind&quot; id=&quot;s-completion_rate&quot;&gt;↕&lt;/span&gt;&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody id=&quot;tbody&quot;&gt;&lt;/tbody&gt;
+      &lt;tfoot id=&quot;tfoot&quot;&gt;&lt;/tfoot&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+  &lt;p style=&quot;font-size:11px;color:var(--color-text-secondary);margin-top:10px;line-height:1.6&quot;&gt;
+    View rate = views / impressions. Completion rate = completions / impressions. Green rows = accounts that watched the case study video to completion. Click any column to sort.
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+const D={
+  b2g:[
+    {name:&quot;Virginia DOT&quot;,             imp:4295,views:1874,view_rate:43.63,completions:28,completion_rate:0.65},
+    {name:&quot;Florida DOT&quot;,              imp:2006,views:843, view_rate:42.02,completions:10,completion_rate:0.50},
+    {name:&quot;Indiana DOT&quot;,              imp:1510,views:765, view_rate:50.66,completions:4, completion_rate:0.26},
+    {name:&quot;Georgia DOT&quot;,              imp:556, views:231, view_rate:41.55,completions:4, completion_rate:0.72},
+    {name:&quot;Illinois DOT&quot;,             imp:909, views:336, view_rate:36.96,completions:3, completion_rate:0.33},
+    {name:&quot;Connecticut DOT&quot;,          imp:920, views:338, view_rate:36.74,completions:0, completion_rate:0.00},
+    {name:&quot;Michigan DOT&quot;,             imp:865, views:388, view_rate:44.86,completions:0, completion_rate:0.00},
+    {name:&quot;Kansas DOT&quot;,               imp:601, views:228, view_rate:37.94,completions:0, completion_rate:0.00},
+    {name:&quot;South Carolina DOT&quot;,       imp:590, views:227, view_rate:38.47,completions:0, completion_rate:0.00},
+    {name:&quot;Nebraska DOT&quot;,             imp:368, views:156, view_rate:42.39,completions:0, completion_rate:0.00},
+    {name:&quot;Virginia Rail &amp; Public&quot;,   imp:298, views:138, view_rate:46.31,completions:0, completion_rate:0.00},
+    {name:&quot;Montana DOT&quot;,              imp:285, views:128, view_rate:44.91,completions:0, completion_rate:0.00},
+    {name:&quot;Mississippi DOT&quot;,          imp:276, views:144, view_rate:52.17,completions:0, completion_rate:0.00},
+    {name:&quot;FAA Safety Team&quot;,          imp:275, views:110, view_rate:40.00,completions:0, completion_rate:0.00},
+    {name:&quot;Maine DOT&quot;,                imp:245, views:128, view_rate:52.24,completions:0, completion_rate:0.00},
+    {name:&quot;West Virginia DOT&quot;,        imp:242, views:85,  view_rate:35.12,completions:0, completion_rate:0.00},
+    {name:&quot;Arkansas DOT&quot;,             imp:236, views:96,  view_rate:40.68,completions:0, completion_rate:0.00},
+    {name:&quot;Southern NH University&quot;,   imp:211, views:57,  view_rate:27.01,completions:0, completion_rate:0.00},
+    {name:&quot;Rhode Island DOT&quot;,         imp:203, views:86,  view_rate:42.36,completions:0, completion_rate:0.00},
+    {name:&quot;Chesterfield County&quot;,      imp:176, views:54,  view_rate:30.68,completions:0, completion_rate:0.00},
+    {name:&quot;Heinen Brothers Agra&quot;,     imp:116, views:13,  view_rate:11.21,completions:0, completion_rate:0.00},
+    {name:&quot;Embraer&quot;,                  imp:114, views:11,  view_rate:9.65, completions:0, completion_rate:0.00},
+    {name:&quot;Alabama DOT&quot;,              imp:103, views:40,  view_rate:38.83,completions:0, completion_rate:0.00},
+    {name:&quot;Alaska DOT&quot;,               imp:92,  views:25,  view_rate:27.17,completions:0, completion_rate:0.00},
+    {name:&quot;AECOM&quot;,                    imp:78,  views:32,  view_rate:41.03,completions:0, completion_rate:0.00},
+  ],
+  ec:[
+    {name:&quot;Washington State DOT&quot;,     imp:1920,views:961, view_rate:50.05,completions:31,completion_rate:1.61},
+    {name:&quot;Pennsylvania DOT&quot;,         imp:1065,views:497, view_rate:46.67,completions:12,completion_rate:1.13},
+    {name:&quot;Connecticut DOT&quot;,          imp:1726,views:690, view_rate:39.98,completions:10,completion_rate:0.58},
+    {name:&quot;Arkansas DOT&quot;,             imp:322, views:142, view_rate:44.10,completions:9, completion_rate:2.80},
+    {name:&quot;Missouri DOT&quot;,             imp:795, views:348, view_rate:43.77,completions:7, completion_rate:0.88},
+    {name:&quot;Georgia DOT&quot;,              imp:621, views:271, view_rate:43.64,completions:6, completion_rate:0.97},
+    {name:&quot;Maryland DOT&quot;,             imp:1081,views:486, view_rate:44.96,completions:5, completion_rate:0.46},
+    {name:&quot;New Jersey DOT&quot;,           imp:728, views:316, view_rate:43.41,completions:5, completion_rate:0.69},
+    {name:&quot;Oregon DOT&quot;,               imp:545, views:283, view_rate:51.93,completions:4, completion_rate:0.73},
+    {name:&quot;Illinois DOT&quot;,             imp:525, views:215, view_rate:40.95,completions:4, completion_rate:0.76},
+    {name:&quot;South Carolina DOT&quot;,       imp:303, views:148, view_rate:48.84,completions:4, completion_rate:1.32},
+    {name:&quot;IEEE&quot;,                     imp:207, views:146, view_rate:70.53,completions:4, completion_rate:1.93},
+    {name:&quot;IET India&quot;,                imp:207, views:146, view_rate:70.53,completions:4, completion_rate:1.93},
+    {name:&quot;New Mexico DOT&quot;,           imp:137, views:59,  view_rate:43.07,completions:4, completion_rate:2.92},
+    {name:&quot;Colorado DOT&quot;,             imp:841, views:346, view_rate:41.14,completions:3, completion_rate:0.36},
+    {name:&quot;NYC DOT&quot;,                  imp:766, views:323, view_rate:42.17,completions:3, completion_rate:0.39},
+    {name:&quot;Michigan DOT&quot;,             imp:668, views:270, view_rate:40.42,completions:0, completion_rate:0.00},
+    {name:&quot;DC DOT&quot;,                   imp:408, views:160, view_rate:39.22,completions:0, completion_rate:0.00},
+    {name:&quot;Oklahoma DOT&quot;,             imp:386, views:148, view_rate:38.34,completions:0, completion_rate:0.00},
+    {name:&quot;Iowa DOT&quot;,                 imp:253, views:114, view_rate:45.06,completions:0, completion_rate:0.00},
+    {name:&quot;Louisiana DOT&quot;,            imp:237, views:111, view_rate:46.84,completions:0, completion_rate:0.00},
+    {name:&quot;Kentucky Transportation&quot;,  imp:207, views:68,  view_rate:32.85,completions:0, completion_rate:0.00},
+    {name:&quot;California DOT&quot;,           imp:190, views:80,  view_rate:42.11,completions:0, completion_rate:0.00},
+    {name:&quot;New Hampshire DOT&quot;,        imp:186, views:85,  view_rate:45.70,completions:0, completion_rate:0.00},
+    {name:&quot;Nebraska DOT&quot;,             imp:137, views:61,  view_rate:44.53,completions:0, completion_rate:0.00},
+  ]
+};
+
+let camp=&#x27;b2g&#x27;, sortKey=&#x27;imp&#x27;, sortDir=-1;
+
+function maxOf(key){ return Math.max(...D[camp].map(r=&gt;r[key]),0.01); }
+
+function render(){
+  const data=[...D[camp]];
+  data.sort((a,b)=&gt;{
+    const ak=sortKey===&#x27;name&#x27;?a.name:a[sortKey];
+    const bk=sortKey===&#x27;name&#x27;?b.name:b[sortKey];
+    return sortDir*(typeof ak===&#x27;string&#x27;?ak.localeCompare(bk):ak-bk);
+  });
+
+  const mxVR=maxOf(&#x27;view_rate&#x27;), mxCR=maxOf(&#x27;completion_rate&#x27;);
+  const totImp=data.reduce((a,r)=&gt;a+r.imp,0);
+  const totViews=data.reduce((a,r)=&gt;a+r.views,0);
+  const totComp=data.reduce((a,r)=&gt;a+r.completions,0);
+  const compAccts=data.filter(r=&gt;r.completions&gt;0).length;
+
+  document.getElementById(&#x27;stats&#x27;).innerHTML=`
+    &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat-val&quot;&gt;${totImp.toLocaleString()}&lt;/div&gt;&lt;div class=&quot;stat-lbl&quot;&gt;Total impressions&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat-val&quot;&gt;${totViews.toLocaleString()}&lt;/div&gt;&lt;div class=&quot;stat-lbl&quot;&gt;Total views&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat-val&quot;&gt;${totComp}&lt;/div&gt;&lt;div class=&quot;stat-lbl&quot;&gt;Video completions&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat-val&quot;&gt;${compAccts} / ${data.length}&lt;/div&gt;&lt;div class=&quot;stat-lbl&quot;&gt;Accounts that completed&lt;/div&gt;&lt;/div&gt;`;
+
+  document.getElementById(&#x27;tbody&#x27;).innerHTML=data.map(r=&gt;{
+    const rowClass=r.completions&gt;0?(r.completions&gt;=5?&#x27;top-completer&#x27;:&#x27;completed&#x27;):&#x27;&#x27;;
+    return`&lt;tr class=&quot;${rowClass}&quot;&gt;
+      &lt;td style=&quot;font-weight:${r.completions&gt;0?&#x27;500&#x27;:&#x27;400&#x27;}&quot;&gt;${r.name}&lt;/td&gt;
+      &lt;td class=&quot;r&quot;&gt;${r.imp.toLocaleString()}&lt;/td&gt;
+      &lt;td class=&quot;r&quot;&gt;${r.views.toLocaleString()}&lt;/td&gt;
+      &lt;td class=&quot;r&quot;&gt;
+        &lt;div class=&quot;bar-wrap&quot;&gt;
+          &lt;div class=&quot;bar-track&quot;&gt;&lt;div class=&quot;bar-fill-view&quot; style=&quot;width:${Math.round(r.view_rate/mxVR*100)}%&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+          &lt;span style=&quot;min-width:38px;text-align:right&quot;&gt;${r.view_rate.toFixed(1)}%&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;r&quot;&gt;${r.completions&gt;0?`&lt;span class=&quot;badge-comp&quot;&gt;${r.completions}&lt;/span&gt;`:&#x27;&lt;span class=&quot;badge-zero&quot;&gt;—&lt;/span&gt;&#x27;}&lt;/td&gt;
+      &lt;td class=&quot;r&quot;&gt;
+        ${r.completion_rate&gt;0?`&lt;div class=&quot;bar-wrap&quot;&gt;
+          &lt;div class=&quot;bar-track&quot;&gt;&lt;div class=&quot;bar-fill-comp&quot; style=&quot;width:${Math.round(r.completion_rate/mxCR*100)}%&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+          &lt;span style=&quot;min-width:38px;text-align:right&quot;&gt;${r.completion_rate.toFixed(2)}%&lt;/span&gt;
+        &lt;/div&gt;`:&#x27;&lt;span class=&quot;badge-zero&quot; style=&quot;float:right&quot;&gt;—&lt;/span&gt;&#x27;}
+      &lt;/td&gt;
+    &lt;/tr&gt;`;
+  }).join(&#x27;&#x27;);
+
+  const ovVR=(totViews/totImp*100).toFixed(1);
+  const ovCR=(totComp/totImp*100).toFixed(2);
+  document.getElementById(&#x27;tfoot&#x27;).innerHTML=`&lt;tr&gt;
+    &lt;td&gt;Totals — ${data.length} accounts&lt;/td&gt;
+    &lt;td class=&quot;r&quot;&gt;${totImp.toLocaleString()}&lt;/td&gt;
+    &lt;td class=&quot;r&quot;&gt;${totViews.toLocaleString()}&lt;/td&gt;
+    &lt;td class=&quot;r&quot;&gt;&lt;div class=&quot;bar-wrap&quot;&gt;&lt;div class=&quot;bar-track&quot;&gt;&lt;div class=&quot;bar-fill-view&quot; style=&quot;width:100%&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;span style=&quot;min-width:38px;text-align:right&quot;&gt;${ovVR}%&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+    &lt;td class=&quot;r&quot;&gt;&lt;span class=&quot;badge-comp&quot;&gt;${totComp}&lt;/span&gt;&lt;/td&gt;
+    &lt;td class=&quot;r&quot;&gt;&lt;div class=&quot;bar-wrap&quot;&gt;&lt;div class=&quot;bar-track&quot;&gt;&lt;div class=&quot;bar-fill-comp&quot; style=&quot;width:100%&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;span style=&quot;min-width:38px;text-align:right&quot;&gt;${ovCR}%&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;`;
+
+  [&#x27;name&#x27;,&#x27;imp&#x27;,&#x27;views&#x27;,&#x27;view_rate&#x27;,&#x27;completions&#x27;,&#x27;completion_rate&#x27;].forEach(k=&gt;{
+    const el=document.getElementById(&#x27;s-&#x27;+k);
+    if(el){el.textContent=k===sortKey?(sortDir===-1?&#x27;↓&#x27;:&#x27;↑&#x27;):&#x27;↕&#x27;;el.className=&#x27;sort-ind&#x27;+(k===sortKey?&#x27; on&#x27;:&#x27;&#x27;);}
+  });
+}
+
+function swCamp(id,btn){
+  camp=id;sortKey=&#x27;imp&#x27;;sortDir=-1;
+  document.querySelectorAll(&#x27;.tab&#x27;).forEach(t=&gt;t.className=&#x27;tab&#x27;);
+  btn.className=&#x27;tab &#x27;+(id===&#x27;b2g&#x27;?&#x27;b2g&#x27;:&#x27;ec&#x27;);
+  document.querySelectorAll(&#x27;.tog&#x27;).forEach(t=&gt;t.classList.remove(&#x27;on&#x27;));
+  document.querySelectorAll(&#x27;.tog&#x27;)[0].classList.add(&#x27;on&#x27;);
+  render();
+}
+function swSort(key,btn){
+  if(sortKey===key)sortDir*=-1; else{sortKey=key;sortDir=-1;}
+  if(btn){document.querySelectorAll(&#x27;.tog&#x27;).forEach(t=&gt;t.classList.remove(&#x27;on&#x27;));btn.classList.add(&#x27;on&#x27;);}
+  render();
+}
+
+render();
+&lt;/script&gt;
+" style="width:100%;height:600px;border:none;"></iframe>
+        </div>
+      </div>
+        <p style="font-size:0.78rem;color:#7a8799;margin-top:8px;">Interactive table, click column headers to sort. Toggle between product tracks using the buttons. Data from Feb 1 &ndash; Mar 23, 2026.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- AI SYSTEMS -->
+<section class="ai-section">
+  <div class="section-inner">
+    <p class="section-label" style="color:var(--gold)">Beyond Execution</p>
+    <h2 class="section-title" style="color:var(--white)">AI-Powered Marketing Systems</h2>
+    <p class="ai-intro">When standard tools hit their ceiling, I build what's missing. These are three prompt-driven systems I designed from scratch: one to solve a specific client reporting problem that no dashboard could fix, and two deployed agency-wide to raise the baseline of what strategy work looks like at scale.</p>
+    <div class="ai-cards">
+
+      <div class="ai-card">
+        <div class="ai-card-top">
+          <span class="ai-tag">Client-Specific</span>
+          <h3>Account-Level ABM Reporting System</h3>
+          <p class="ai-desc">A government technology client needed board-level visibility into which named accounts were engaging across LinkedIn, StackAdapt, and HubSpot. The problem: no existing dashboard could surface account-level intent signals, email engagement, and video completion data in one view, in a format leadership could actually read. I made a product decision: instead of patching together screenshots from three platforms, I designed a structured prompt system that transforms raw multi-platform exports into a custom interactive HTML deliverable, sortable by account, signal type, and engagement depth. No third-party software required to open or present it.</p>
+        </div>
+        <div class="ai-card-bottom">
+          <div class="ai-detail">
+            <span class="ai-detail-label">The problem it solved</span>
+            <span class="ai-detail-val">Standard dashboards couldn't connect account identity across platforms or present cross-channel engagement in a format meaningful for board reporting</span>
+          </div>
+          <div class="ai-detail">
+            <span class="ai-detail-label">What it produces</span>
+            <span class="ai-detail-val">Interactive, sortable account engagement tables, cross-platform intent charts, video completion data by named account, and intent signal callouts</span>
+          </div>
+          <div class="ai-detail">
+            <span class="ai-detail-label">Why it matters</span>
+            <span class="ai-detail-val">Turns hours of manual export reconciliation into a repeatable, client-ready deliverable that makes ABM performance legible at the executive level</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ai-card">
+        <div class="ai-card-top">
+          <span class="ai-tag">Personal Workflow</span>
+          <h3>Demand Generation Strategy Generator</h3>
+          <p class="ai-desc">Building a full demand generation strategy from scratch was taking 10 to 15 hours per client. I had all the right inputs, personas, pain points, problems, competitive context, but synthesizing them into a comprehensive, creative program was time-intensive and left room for blind spots. I built a structured prompt that takes everything I know about a client and produces a complete three-phase demand gen program. It surfaces channel combinations and tactical angles I might not have reached on my own, in a fraction of the time.</p>
+        </div>
+        <div class="ai-card-bottom">
+          <div class="ai-detail">
+            <span class="ai-detail-label">The problem it solved</span>
+            <span class="ai-detail-val">Strategy development was taking 10 to 15 hours per engagement. Structured inputs existed but synthesizing them into a full program manually left gaps and took too long</span>
+          </div>
+          <div class="ai-detail">
+            <span class="ai-detail-label">What it produces</span>
+            <span class="ai-detail-val">Deck-ready three-phase demand gen program: paid media plan, ABM layer, email strategy, content recommendations, geo targeting, and event and publication suggestions</span>
+          </div>
+          <div class="ai-detail">
+            <span class="ai-detail-label">Why it matters</span>
+            <span class="ai-detail-val">Compresses strategy development from days to hours and consistently surfaces ideas that pure manual thinking misses</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ai-card">
+        <div class="ai-card-top">
+          <span class="ai-tag">Agency-Wide</span>
+          <h3>Sales Enablement Leave-Behind Generator</h3>
+          <p class="ai-desc">B2B clients with field sales teams kept asking for leave-behind ideas and the requests were handled ad hoc, starting from scratch every time. I built a reusable prompt that generates a complete tiered leave-behind strategy on demand: from high-volume cold visit materials to premium ABM gifting, with persona-specific concepts, trade show ideas, event tactics, and creative names and taglines built in. Every output follows the same scalable formula so the quality is consistent regardless of industry.</p>
+        </div>
+        <div class="ai-card-bottom">
+          <div class="ai-detail">
+            <span class="ai-detail-label">The problem it solved</span>
+            <span class="ai-detail-val">Sales enablement requests were recurring but handled inconsistently, with no repeatable starting point for creative concepting across client types</span>
+          </div>
+          <div class="ai-detail">
+            <span class="ai-detail-label">What it produces</span>
+            <span class="ai-detail-val">Tiered leave-behind program from cold outreach through premium ABM gifting, with persona-targeted concepts, QR code CTAs, trade show tactics, and event ideas</span>
+          </div>
+          <div class="ai-detail">
+            <span class="ai-detail-label">Why it matters</span>
+            <span class="ai-detail-val">Fully reusable across any industry by swapping the client brief, giving sales teams a strategic, creative starting point in minutes instead of days</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-section" id="skills">
+  <div class="section-inner">
+    <p class="section-label">Capabilities</p>
+    <h2 class="section-title">Skills &amp; Tools</h2>
+    <div class="skills-grid">
+      <div class="skills-col reveal">
+        <h4>Paid Media</h4>
+        <span class="skill-tag">Google Ads</span>
+        <span class="skill-tag">Performance Max</span>
+        <span class="skill-tag">LinkedIn Ads</span>
+        <span class="skill-tag">Meta Ads</span>
+        <span class="skill-tag">StackAdapt</span>
+        <span class="skill-tag">Bing Ads</span>
+        <span class="skill-tag">Display &amp; Retargeting</span>
+      </div>
+      <div class="skills-col reveal">
+        <h4>Analytics &amp; Tracking</h4>
+        <span class="skill-tag">Google Analytics (GA4)</span>
+        <span class="skill-tag">Google Search Console</span>
+        <span class="skill-tag">Semrush</span>
+        <span class="skill-tag">Google Tag Manager</span>
+        <span class="skill-tag">Looker Studio</span>
+        <span class="skill-tag">Tableau</span>
+        <span class="skill-tag">Microsoft Excel</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">UTM Architecture</span>
+      </div>
+      <div class="skills-col reveal">
+        <h4>CRM &amp; Marketing Ops</h4>
+        <span class="skill-tag">HubSpot</span>
+        <span class="skill-tag">Salesforce</span>
+        <span class="skill-tag">Zoho</span>
+        <span class="skill-tag">Email Nurture Workflows</span>
+        <span class="skill-tag">Lead Management</span>
+        <span class="skill-tag">ABM Strategy</span>
+      </div>
+      <div class="skills-col reveal">
+        <h4>Strategy &amp; Execution</h4>
+        <span class="skill-tag">B2B Demand Gen</span>
+        <span class="skill-tag">Account-Based Marketing</span>
+        <span class="skill-tag">Keyword Research</span>
+        <span class="skill-tag">Conversion Rate Optimization</span>
+        <span class="skill-tag">Campaign Architecture</span>
+        <span class="skill-tag">Client Reporting</span>
+      </div>
+    </div>
+    <div class="cert-row">
+      <span class="cert-badge">Google Ads Certified</span>
+      <span class="cert-badge">Google Analytics Certified</span>
+      <span class="cert-badge">HubSpot Marketing Software</span>
+      <span class="cert-badge">HubSpot RevOps Bootcamp</span>
+      <span class="cert-badge">MOS Excel Associate</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-inner">
+    <p class="section-label">Let's Connect</p>
+    <h2 class="section-title">Turning Paid Media Into Pipeline Starts Here</h2>
+    <p class="contact-sub">Available for full-time roles, fractional engagements, and consulting projects in paid media and growth marketing.</p>
+    <div class="contact-links">
+      <a href="mailto:k.hoggan@gmail.com" class="contact-link">
+        &#9993; k.hoggan@gmail.com
+      </a>
+      <a href="tel:9197534751" class="contact-link">
+        &#128222; 919.753.4751
+      </a>
+      <a href="https://www.linkedin.com/in/kimhoggan" target="_blank" class="contact-link">
+        &#128101; LinkedIn Profile
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 Kim Hoggan &nbsp;|&nbsp; Paid Media &amp; Growth Marketing
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(    entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
