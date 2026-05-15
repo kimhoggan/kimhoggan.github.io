@@ -1,12 +1,13 @@
 import './_group.css';
 
-const PHOTO_URL = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1200&h=900&fit=crop&crop=top";
+const BG_URL = "https://images.unsplash.com/photo-1535016120720-40c646be5580?w=1600&h=900&fit=crop";
+const PHOTO_URL = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=700&fit=crop&crop=top";
 
 export function FullBleed() {
   return (
     <div style={{ fontFamily: "'DM Sans', sans-serif", minHeight: '100vh', position: 'relative', overflow: 'hidden' }}>
-      <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${PHOTO_URL})`, backgroundSize: 'cover', backgroundPosition: 'center top', filter: 'blur(2px) brightness(0.28) saturate(0.7)', transform: 'scale(1.06)' }} />
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(24,19,31,0.82) 0%, rgba(34,25,46,0.70) 55%, rgba(43,31,57,0.78) 100%)' }} />
+      <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${BG_URL})`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'blur(3px) brightness(0.22) saturate(0.6)', transform: 'scale(1.06)' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(24,19,31,0.75) 0%, rgba(34,25,46,0.60) 55%, rgba(43,31,57,0.72) 100%)' }} />
       <div style={{ position: 'absolute', top: '-200px', right: '-160px', width: '680px', height: '680px', background: 'radial-gradient(circle, rgba(184,101,69,0.22) 0%, transparent 62%)', pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', bottom: '-80px', left: '-80px', width: '520px', height: '520px', background: 'radial-gradient(circle, rgba(198,155,99,0.15) 0%, transparent 65%)', pointerEvents: 'none' }} />
 
@@ -38,11 +39,11 @@ export function FullBleed() {
 
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
           <div style={{ position: 'relative' }}>
-            <div style={{ position: 'absolute', inset: '-8px', borderRadius: '30px', background: 'linear-gradient(135deg, rgba(198,155,99,0.4) 0%, rgba(184,101,69,0.2) 100%)', filter: 'blur(12px)' }} />
+            <div style={{ position: 'absolute', inset: '-8px', borderRadius: '30px', background: 'linear-gradient(135deg, rgba(198,155,99,0.4) 0%, rgba(184,101,69,0.2) 100%)', filter: 'blur(14px)' }} />
             <img
               src={PHOTO_URL}
               alt="Kim Hoggan"
-              style={{ width: 'clamp(160px, 18vw, 240px)', height: 'clamp(160px, 18vw, 240px)', objectFit: 'cover', objectPosition: 'center top', borderRadius: '26px', border: '1px solid rgba(235,200,152,0.36)', position: 'relative', display: 'block' }}
+              style={{ width: 'clamp(180px, 20vw, 260px)', height: 'clamp(200px, 23vw, 300px)', objectFit: 'cover', objectPosition: 'center top', borderRadius: '26px', border: '1px solid rgba(235,200,152,0.36)', boxShadow: '0 24px 80px rgba(10,8,15,0.5)', position: 'relative', display: 'block' }}
             />
           </div>
           <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>Based in Salt Lake City</p>
