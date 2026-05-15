@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "PPFc47uwM-_kz9MWlUUy5"
+uri = "file://artifacts/portfolio/kim-hoggan-portfolio.zip"
+type = "unspecified"
+title = "Kim Hoggan Portfolio (self-contained HTML)"
