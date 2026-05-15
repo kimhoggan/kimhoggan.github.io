@@ -1,7 +1,7 @@
 import './_group.css';
 
 const BG_URL = "https://images.unsplash.com/photo-1535016120720-40c646be5580?w=1600&h=900&fit=crop";
-const PHOTO_URL = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=700&fit=crop&crop=top";
+const PHOTO_URL = "/__mockup/kim-hoggan.png";
 
 export function FullBleed() {
   return (
